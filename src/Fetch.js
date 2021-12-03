@@ -21,6 +21,7 @@ const GetData = () => {
 			for(let id in data){
 				PlantsInfo.push({
 					id:id,
+					ImgUrl:data[id].ImgUrl,
 					LocalName:data[id].LocalName,
 					ScientificName:data[id].ScientificName,
 					Distribution:data[id].Distribution,
@@ -38,16 +39,16 @@ const GetData = () => {
 
 		{
 			plantData.map((data,index)=>{
-				return <><br/>
+				return <>
 				<Card sx={{ maxWidth: 300 }}>
 					<CardMedia
         			component="img"
         			alt="plant"
-        			height="140"
-        			image="/static/images/cards/contemplative-reptile.jpg"
+        			height="180"
+        			image={data.ImgUrl}
       			/>
 					<CardContent>
-        				<Typography gutterBottom variant="h5" component="div">
+        				<Typography gutterBottom variant="h6" component="div">
           				{data.LocalName}
        					</Typography>
         				<Typography variant="body2" color="text.secondary">
