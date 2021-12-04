@@ -16,8 +16,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-import HomeIcon from "@mui/icons-material/Home";
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import InfoIcon from "@mui/icons-material/Info";
+import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 import Fetch from "./Fetch";
 
 const drawerWidth = 240;
@@ -99,6 +101,25 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  const itemsList = [
+    {
+      text: "Home",
+      icon: <HomeRoundedIcon/>
+    },
+    {
+      text: "About",
+      icon: <InfoIcon/>
+    },
+    {
+      text: "Contact",
+      icon: <MailRoundedIcon/>
+    },
+    {
+      text: "Add New Species",
+      icon: <AddBoxRoundedIcon/>
+    },
+  ];
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -133,34 +154,25 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Home", "About", "Contact", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <HomeIcon /> : <InfoIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {itemsList.map((item, index) => {
+            const { text, icon } = item;
+            return (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {icon}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            );
+          })}
         </List>
         <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <InfoIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
 
-     
-
         <Typography paragraph>
-          <Fetch/>
+          <Fetch />
         </Typography>
         <Typography paragraph></Typography>
       </Box>

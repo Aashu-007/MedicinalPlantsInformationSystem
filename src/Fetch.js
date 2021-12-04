@@ -9,6 +9,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 
 const GetData = () => {
 	const [plantData, setPlantData] = useState([]);
@@ -27,11 +28,13 @@ const GetData = () => {
 					Distribution: data[id].Distribution,
 					PartUseandUses: data[id].PartUseandUses,
 					Types: data[id].Types,
+					Location: data[id].Location,
 				});
 			}
 			setPlantData(PlantsInfo);
 		});
 	}, []);
+
 
 	return (
 		<div>
@@ -64,7 +67,8 @@ const GetData = () => {
 													variant="body2"
 													color="text.secondary"
 												>
-													{data.Types}
+													<LocationOnRoundedIcon color="success" fontSize="small" sx={{ paddingTop: '5px' }}/>
+													{data.Location}
 												</Typography>
 											</CardContent>
 											<CardActions>
