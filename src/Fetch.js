@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import Box from "@mui/material/Box";
+import Container from '@mui/material/Container';
 
 const GetData = () => {
 	const [plantData, setPlantData] = useState([]);
@@ -38,6 +40,8 @@ const GetData = () => {
 
 	return (
 		<div>
+		<Container disableGutters maxWidth={false} sx={{p:5}}>
+			<Box component="main" sx={{ flexGrow: 1, p: 3 , mt:2}}>
 			<p>
 				<Grid container spacing={4}>
 					{plantData.map((data, index) => {
@@ -67,7 +71,7 @@ const GetData = () => {
 													variant="body2"
 													color="text.secondary"
 												>
-													<LocationOnRoundedIcon color="success" fontSize="small" sx={{ paddingTop: '5px' }}/>
+													<LocationOnRoundedIcon color="success" fontSize="small" sx={{ paddingTop: '4px' }}/>
 													{data.Location}
 												</Typography>
 											</CardContent>
@@ -87,6 +91,8 @@ const GetData = () => {
 					})}
 				</Grid>
 			</p>
+			</Box>
+		</Container>
 		</div>
 	);
 };
