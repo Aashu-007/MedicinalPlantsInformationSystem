@@ -10,7 +10,6 @@ function App() {
     <div>
       {/*<Offline>Make sure you have an active internet connection.</Offline>*/}
       {/*<Online>*/}
-        {/*<Drawer />*/}
         <AppBar />
         <Fetch />
         <Scroll showBelow={145} />
