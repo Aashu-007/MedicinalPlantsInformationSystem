@@ -1,20 +1,25 @@
 import React from "react";
 import "./App.css";
-import Fetch from "./Fetch";
-// import { Offline, Online } from "react-detect-offline";
-import Scroll from "./Scroll";
-import AppBar from "./Appbar";
+import Drawer from "./Drawer";
+import Home from "./Fetch";
+import AddSpecies from "./AddSpecies";
+import Contact from "./Contact";
+import About from "./About";
+import { Switch, Route } from "react-router-dom";
+
+// import {BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      {/*<Offline>Make sure you have an active internet connection.</Offline>*/}
-      {/*<Online>*/}
-        <AppBar />
-        <Fetch />
-        <Scroll showBelow={145} />
-      {/*</Online>*/}
-    </div>
+    <>
+      <Drawer />
+      <Switch>
+        <Route exact from="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/addspecies" component={AddSpecies} />
+      </Switch>
+    </>
   );
 }
 

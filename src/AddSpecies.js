@@ -1,14 +1,17 @@
-import React from "react";
-import Modal from "@mui/material/Modal";
+import React from 'react';
+import Typography from "@mui/material/Typography";
 
-export default function BasicModal() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    return( <div>
-    	
-    </div>
-
-    );
+const About = () => {
+    return (
+        <div className="">
+        <br/>
+        <br/>
+        <br/>
+        <br/><br/>
+        <br/>
+            <Typography variant="h3" color="primary">This is an add species page</Typography>
+        </div>
+    )
 }
+
+export default About
