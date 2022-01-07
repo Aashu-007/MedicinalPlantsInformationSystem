@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import Drawer from "./Drawer";
-import Home from "./Fetch";
-import AddSpecies from "./AddSpecies";
-import Contact from "./Contact";
-import About from "./About";
+import Drawer from "./components/Drawer";
+import Home from "./components/Fetch";
+import AddSpecies from "./pages/AddSpecies";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
 import { Switch, Route } from "react-router-dom";
 
 // import {BrowserRouter, Route, Switch } from "react-router-dom";

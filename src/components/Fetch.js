@@ -1,5 +1,5 @@
 import React from "react";
-import firebase from "./firebase";
+import firebase from "../firebase.js";
 import { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
