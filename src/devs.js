@@ -11,8 +11,8 @@ const devs = [
 	},
 	{
 		name: "Neeraj Anand",
-		img : "https://firebasestorage.googleapis.com/v0/b/mpis-mini.appspot.com/o/adarsh.jpg?alt=media&token=a73feae0-b005-4997-a8d8-5efdd54a22c8",
-		description: "A Tech enthusiast and gadgets lover yet a programming freak from a small town of Sikkim i.e Jorethang.",
+		img : "",
+		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 		ln : "https://linkedin.com/in/nirmal-gupta-792641168",
 		git : "https://github.com/",
 		fb: "https://facebook.com/neerajAnand",
@@ -22,7 +22,7 @@ const devs = [
 	{
 		name: "Adarsh Sharma",
 		img : "https://firebasestorage.googleapis.com/v0/b/mpis-mini.appspot.com/o/adarsh.jpg?alt=media&token=a73feae0-b005-4997-a8d8-5efdd54a22c8",
-		description: "A Tech enthusiast and gadgets lover yet a programming freak from a small town of Sikkim i.e Jorethang.",
+		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 		ln : "https://linkedin.com/in/adarsh-sharma-5b7b17227",
 		git : "https://github.com/",
 		fb: "https://facebook.com/adarshSharma",
