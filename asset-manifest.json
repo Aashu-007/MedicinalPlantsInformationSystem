@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/MedicinalPlantsInformationSystem/static/css/main.e49d2551.chunk.css",
+    "main.js": "/MedicinalPlantsInformationSystem/static/js/main.4317c635.chunk.js",
+    "main.js.map": "/MedicinalPlantsInformationSystem/static/js/main.4317c635.chunk.js.map",
+    "runtime-main.js": "/MedicinalPlantsInformationSystem/static/js/runtime-main.e77b4918.js",
+    "runtime-main.js.map": "/MedicinalPlantsInformationSystem/static/js/runtime-main.e77b4918.js.map",
+    "static/css/2.a63ca25f.chunk.css": "/MedicinalPlantsInformationSystem/static/css/2.a63ca25f.chunk.css",
+    "static/js/2.66cff8ae.chunk.js": "/MedicinalPlantsInformationSystem/static/js/2.66cff8ae.chunk.js",
+    "static/js/2.66cff8ae.chunk.js.map": "/MedicinalPlantsInformationSystem/static/js/2.66cff8ae.chunk.js.map",
+    "index.html": "/MedicinalPlantsInformationSystem/index.html",
+    "precache-manifest.d62e04fa47da255d5233f1b2ee3e13cc.js": "/MedicinalPlantsInformationSystem/precache-manifest.d62e04fa47da255d5233f1b2ee3e13cc.js",
+    "service-worker.js": "/MedicinalPlantsInformationSystem/service-worker.js",
+    "static/css/2.a63ca25f.chunk.css.map": "/MedicinalPlantsInformationSystem/static/css/2.a63ca25f.chunk.css.map",
+    "static/css/main.e49d2551.chunk.css.map": "/MedicinalPlantsInformationSystem/static/css/main.e49d2551.chunk.css.map",
+    "static/js/2.66cff8ae.chunk.js.LICENSE.txt": "/MedicinalPlantsInformationSystem/static/js/2.66cff8ae.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e77b4918.js",
+    "static/css/2.a63ca25f.chunk.css",
+    "static/js/2.66cff8ae.chunk.js",
+    "static/css/main.e49d2551.chunk.css",
+    "static/js/main.4317c635.chunk.js"
+  ]
+}
