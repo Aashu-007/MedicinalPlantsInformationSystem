@@ -25,14 +25,14 @@ const FORM_VALIDATION = Yup.object().shape({
     FName: Yup.string().min(3, "Too Short!").required("required"),
     LName: Yup.string().min(3, "Too Short!").required("required"),
     Email: Yup.string().email('Please enter a valid email').required("required"),
-    Message: Yup.string().min(50, "Too Short!").required("required"),
+    Message: Yup.string().min(10, "Too Short!").required("required"),
 });
 
 const notify = () => toast.success("Successfully sent.");
 
 const handleSendMsg = (values, onSubmitProps) => {
-    // const firestore = firebase.database().ref("/PlantDatabase");
-    // firestore.push(values);
+    const firestore = firebase.database().ref("/Contact");
+    firestore.push(values);
     console.log("Form data", values);
     // console.log("Submit props", onSubmitProps);
     onSubmitProps.setSubmitting(false);
@@ -75,10 +75,10 @@ const Contact = () => {
                         sx={{
                             py: 2,
                             flexGrow: 1,
-                            display: { xs: "none", sm: "block" },
+                            
                         }}
                     >
-                        
+                        We'd love to hear from you!
                     </Typography>
                     <Formik
                         initialValues={{ ...INITIAL_FORM_STATE }}
