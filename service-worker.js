@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/MedicinalPlantsInformationSystem/precache-manifest.7e4411631a089f7e31a0e9413955c8b8.js"
+  "/MedicinalPlantsInformationSystem/precache-manifest.ffe648a0f6d855d98a32b79e6ee666e5.js"
 );
 
 self.addEventListener('message', (event) => {
