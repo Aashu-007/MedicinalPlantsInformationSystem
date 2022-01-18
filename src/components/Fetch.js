@@ -14,11 +14,12 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import ScrollToTop from "react-scroll-to-top";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import green from "@mui/material/colors/green";
+import theme from "../theme";
+import { Link } from 'react-router-dom';
 
 const style = {
 	scroll: {
-		backgroundColor: green[700],
+		backgroundColor: theme.palette.primary.main,
 		borderRadius: 30,
 		right: 15,
 		bottom: 15,
@@ -27,7 +28,6 @@ const style = {
 
 const GetData = () => {
 	const [plantData, setPlantData] = useState([]);
-	const [Transition, setTransition] = useState(true);
 
 	useEffect(() => {
 		const firestore = firebase.database().ref("/PlantDatabase");
@@ -97,20 +97,27 @@ const GetData = () => {
 													</Typography>
 												</CardContent>
 												<CardActions>
-													<Button size="small">
+													<Button
+														size="small"
+														onClick={() => {
+															console.log(
+																data.id
+															);
+														}}
+													>
 														View
 													</Button>
-													{/*	<Modal
-															visible={
-																modal2Visible
-															}
-															onCancel={
-																handleCancel
-															}
-															onOk={handleOk}
-														/>*/}
 													<Button size="small">
-														Learn More
+														<Link
+															to={`/plant/${data.id}`}
+															style={{
+																textDecoration:
+																	"inherit",
+																color: "inherit",
+															}}
+														>
+															Read More
+														</Link>
 													</Button>
 												</CardActions>
 											</CardActionArea>

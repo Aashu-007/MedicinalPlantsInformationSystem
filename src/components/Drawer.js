@@ -22,12 +22,14 @@ import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
+import "../App.css";
+
 const useStyles = makeStyles({
   drawer: {
     position: "absolute",
     width: "220px",
     height: "100%",
-    backgroundColor: green[700],
+    backgroundColor: green[900],
     color: "white",
   },
 });
@@ -36,6 +38,8 @@ const Drawer = () => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
+
+  const [activeTab, setActiveTab] = useState("Home");
 
   const handleMenuClick = () => {
     setOpen(true);
@@ -48,19 +52,19 @@ const Drawer = () => {
       path: "/",
     },
     {
-      text: "About",
-      icon: <InfoIcon style={{ color: green[50] }} />,
-      path: "/about",
+      text: "Add New Species",
+      icon: <AddBoxIcon style={{ color: green[50] }} />,
+      path: "/addspecies",
     },
     {
-      text: "Contact",
+      text: "Contact Us",
       icon: <MailIcon style={{ color: green[50] }} />,
       path: "/contact",
     },
     {
-      text: "Add New Species",
-      icon: <AddBoxIcon style={{ color: green[50] }} />,
-      path: "/addspecies",
+      text: "About",
+      icon: <InfoIcon style={{ color: green[50] }} />,
+      path: "/about",
     },
   ];
   return (
@@ -82,7 +86,7 @@ const Drawer = () => {
             variant="h5"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, ml: -1 }}
           >
             Medicinal & Aromatic Plants of Sikkim
           </Typography>
@@ -90,7 +94,7 @@ const Drawer = () => {
             variant="h5"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "block", sm: "none" } }}
+            sx={{ flexGrow: 1, display: { xs: "block", sm: "none" }, ml: -1 }}
           >
             MPIS Sikkim
           </Typography>
@@ -98,24 +102,38 @@ const Drawer = () => {
       </AppBar>
       <MUIDrawer
         open={open}
-        onOpen={()=>setOpen(true)}
+        onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
         variant="temporary"
-        color="secondary"
+        color="primary"
       >
         <List className={classes.drawer}>
           <Box sx={{ flexGrow: 1, mt: -1 }}>
-            <img src="logo.jpg" alt="mpis sikkim logo" width="100%" height="100%" />
+            <img
+              src="logo.jpg"
+              alt="mpis sikkim logo"
+              width="100%"
+              height="100%"
+            />
           </Box>
           <Divider variant="middle" />
           {itemsList.map((item, index) => {
             const { text, icon, path } = item;
             return (
-              <Link to={path} style={{ textDecoration: 'inherit',color:'inherit'}} onClick={()=>setOpen(false)}>
-                <ListItem button key={text}>
-                  {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                  <ListItemText primary={text} />
-                </ListItem>
+              <Link
+                to={path}
+                style={{ textDecoration: "inherit", color: "inherit" }}
+                onClick={() => setOpen(false)}
+              >
+                <p
+                  className={`${activeTab === text ? "active" : ""}`}
+                  onClick={() => setActiveTab(text)}
+                >
+                  <ListItem button key={text}>
+                    {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                    <ListItemText primary={text} />
+                  </ListItem>
+                </p>
               </Link>
             );
           })}
