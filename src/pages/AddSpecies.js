@@ -33,7 +33,7 @@ const FORM_VALIDATION = Yup.object().shape({
     Types: Yup.string().min(3, "Too Short!").required("required"),
     Location: Yup.string().min(4, "Too Short!").required("required"),
     Description: Yup.string()
-        .min(5000, "Should be of minimum 1000 words")
+        .min(2000, "Should be of minimum 500 words")
         .required("required"),
 });
 
@@ -78,7 +78,7 @@ const AddSpecies = () => {
                     <Divider sx={{pt:1}}/>
                     <Typography
                         variant="h6"
-                        color="text.secondary"
+                        color="text.primary"
                         sx={{
                             py: 2,
                             flexGrow: 1,
@@ -89,7 +89,7 @@ const AddSpecies = () => {
                     </Typography>
                     <Typography
                         variant="h6"
-                        color="primary"
+                        color="text.primary"
                         sx={{
                             pb: 2,
                             flexGrow: 1,
@@ -159,7 +159,7 @@ const AddSpecies = () => {
                                     <Textfield
                                         name="Description"
                                         fullWidth
-                                        placeholder="Enter the Description here in 1000-1500 words."
+                                        placeholder="Enter the Description here in 500-800 words."
                                         multiline
                                         rows={6}
                                     />

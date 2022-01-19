@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import MailIcon from "@mui/icons-material/Mail";
@@ -20,7 +20,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import "../App.css";
 
@@ -40,6 +40,20 @@ const Drawer = () => {
   const [open, setOpen] = useState(false);
 
   const [activeTab, setActiveTab] = useState("Home");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if(location.pathname === "/"){
+      setActiveTab("Home")
+    }else if(location.pathname === "/addspecies"){
+      setActiveTab("Add New Species")
+    }else if(location.pathname === "/contact"){
+      setActiveTab("Contact Us")
+    }else if(location.pathname === "/about"){
+      setActiveTab("About")
+    }
+  }, [location])
 
   const handleMenuClick = () => {
     setOpen(true);

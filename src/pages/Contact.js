@@ -70,7 +70,7 @@ const Contact = () => {
                         <Chip label="Get in Touch" />
                     </Divider>
                     <Typography
-                        variant="h5"
+                        variant="h6"
                         color="text.primary"
                         sx={{
                             py: 2,

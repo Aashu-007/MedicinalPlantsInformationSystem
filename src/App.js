@@ -6,6 +6,7 @@ import AddSpecies from "./pages/AddSpecies";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Error from "./pages/ErrorPage";
+import Plants from './pages/Plants'
 import { Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
@@ -22,7 +23,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/addspecies" component={AddSpecies} />
-          <Route exact path="/plant/:id" component={AddSpecies} />
+          <Route exact path="/plant/:id" component={Plants} />
           <Route component={Error} />
         </Switch>
       </ThemeProvider>
