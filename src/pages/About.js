@@ -63,16 +63,24 @@ const About = () => {
                         customs and knowledge.The usage of traditional remedies
                         increases when conventional medicine is ineffective in
                         the treatment of disease, such as in advanced cancer and
-                        in the face of new infectious diseases. To create
+                        in the face of new infectious diseases. 
+                    </Typography>
+                    <Typography variant="body1">
+                    <span style={{fontWeight: "bold",fontSize: 18}}>Objectives</span>
+                    <ul>
+                        <li>To create
                         maximum awareness among the common people about
-                        Medicinal Plants.This Information System will strengthen
+                        Medicinal Plants.</li>
+                        <li>This Information System will strengthen
                         the knowledge and help researchers on Medicinal Plants
                         in different Universities and Educational Institutions
-                        of states by providing an open information system. It
+                        of states by providing an open information system.</li>
+                        <li>It
                         will help the Medicinal practitioners and Botanists to
                         find the herbs and medicines easily.People will come to
-                        know about the type and variety of plants location wise.
-                    </Typography>
+                        know about the type and variety of plants location wise.</li>
+                    </ul>
+                     </Typography>
                     <Divider>
                         <Chip label="People Behind This Wonderful Project" />
                     </Divider>

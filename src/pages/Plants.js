@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import firebase from "../firebase";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -8,11 +8,13 @@ import Divider from "@mui/material/Divider";
 import theme from "../theme";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardMedia from "@mui/material/CardMedia";
-import CardActionArea from "@mui/material/CardActionArea";
+import Button from "@mui/material/Button";
+import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
+
 
 const Plants = () => {
+
 	const [plantData, setPlantData] = useState({});
 
 	const { id } = useParams();
@@ -44,6 +46,7 @@ const Plants = () => {
 					maxWidth={800}
 					bgcolor="white"
 				>
+				
 				<Typography
                         variant="h2"
                         sx={{ flexGrow: 1 }}
@@ -53,7 +56,7 @@ const Plants = () => {
                     </Typography>
                     <Divider sx={{pt:1}}/>
 					<Grid container sx={{py:2}}>
-						<Grid item xs={12} sm={12} md={6}>
+						<Grid item xs={12} sm={6} md={6}>
 							<Card
 								sx={{
 									maxWidth: 300,
@@ -71,18 +74,20 @@ const Plants = () => {
 									/>
 							</Card>
 						</Grid>
-						<Grid item xs={12} sm={12} md={6}>
-							<Typography sx={{fontSize: 20,pt:3}} variant="subtitle2" color="text.secondary">Local Name : {plantData.LocalName}</Typography>
-							<Typography sx={{fontSize: 20}} variant="subtitle2" color="text.secondary">Scientific Name : {plantData.ScientificName}</Typography>
-							<Typography sx={{fontSize: 20}} variant="subtitle2" color="text.secondary">Types : {plantData.Types}</Typography>
-							<Typography sx={{fontSize: 20}} variant="subtitle2" color="text.secondary">Distribution : {plantData.Distribution}</Typography>
-							<Typography sx={{fontSize: 20}} variant="subtitle2" color="text.secondary">Parts Used and Uses : {plantData.PartUseandUses}</Typography>
-							<Typography sx={{fontSize: 20}} variant="subtitle2" color="text.secondary">Location : {plantData.Location}</Typography>
+						<Grid item xs={12} sm={6} md={6}>
+							<Typography sx={{fontSize: 20,pt:3,pl:2}} variant="subtitle2" color="text.secondary">Local Name : {plantData.LocalName}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Scientific Name : {plantData.ScientificName}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Types : {plantData.Types}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Distribution : {plantData.Distribution}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Parts Used and Uses : {plantData.PartUseandUses}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Location : {plantData.Location}</Typography>
 						</Grid>
 						<Grid xs={12}>
 							<Typography sx={{pt:2,textAlign:'justify'}} variant="body1">{plantData.Description}</Typography>
 						</Grid>
+						<Button variant="contained" color="success" onClick="">Download as PDF</Button>
 					</Grid>
+					
 				</Box>
 			</Container>
 		</>

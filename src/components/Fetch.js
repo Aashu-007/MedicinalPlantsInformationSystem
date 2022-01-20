@@ -15,7 +15,9 @@ import Container from "@mui/material/Container";
 import ScrollToTop from "react-scroll-to-top";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import theme from "../theme";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
 
 const style = {
 	scroll: {
@@ -28,6 +30,15 @@ const style = {
 
 const GetData = () => {
 	const [plantData, setPlantData] = useState([]);
+
+	const [open, setOpen] = useState(false);
+	const [modal, setModal] = useState({});
+
+	const onOpenModal = (data) => {
+		setModal(data);
+		setOpen(true);
+	};
+	const onCloseModal = () => setOpen(false);
 
 	useEffect(() => {
 		const firestore = firebase.database().ref("/PlantDatabase");
@@ -58,7 +69,7 @@ const GetData = () => {
 						{plantData.map((data, index) => {
 							return (
 								<>
-									<Grid item xs={12} md={3} sm={6}>
+									<Grid item xs={12} md={4} sm={6} lg={3}>
 										<Card
 											sx={{
 												maxWidth: 275,
@@ -99,14 +110,13 @@ const GetData = () => {
 												<CardActions>
 													<Button
 														size="small"
-														onClick={() => {
-															console.log(
-																data.id
-															);
-														}}
+														onClick={() =>
+															onOpenModal(data)
+														}
 													>
 														View
 													</Button>
+													
 													<Button size="small">
 														<Link
 															to={`/plant/${data.id}`}
@@ -126,6 +136,40 @@ const GetData = () => {
 								</>
 							);
 						})}
+						{open &&
+													setModal != null ? (
+														<Modal
+															open={open}
+															onClose={
+																onCloseModal
+															}
+															center
+														>
+															<Typography variant="h5" color="secondary">
+															{modal.LocalName}
+															<Typography variant="subtitle1" color="text.primary">
+															<span style={{fontWeight:"bold"}}>Local Name : </span>{modal.LocalName}
+															</Typography>
+															</Typography>
+															<Typography variant="subtitle1" color="text.primary">
+															<span style={{fontWeight:"bold"}}>Scientific Name : </span>{modal.ScientificName}
+															</Typography>
+															<Typography variant="subtitle1" color="text.primary">
+															<span style={{fontWeight:"bold"}}>Distribution : </span>{modal.Distribution}
+															</Typography>
+															<Typography variant="subtitle1" color="text.primary">
+															<span style={{fontWeight:"bold"}}>Types : </span>{modal.Types}
+															</Typography>
+															<Typography variant="subtitle1" color="text.primary">
+															<span style={{fontWeight:"bold"}}>Uses/Parts Used : </span>{modal.PartUseandUses}
+															</Typography>
+															<Typography variant="subtitle1" color="text.primary">
+															<span style={{fontWeight:"bold"}}>Location : </span>{modal.Location}
+															</Typography>
+														</Modal>
+													) : (
+														""
+													)}
 					</Grid>
 				</Box>
 			</Container>
