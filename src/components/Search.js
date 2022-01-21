@@ -224,7 +224,7 @@ const Search = () => {
 										color="text.primary"
 									>
 										<span style={{ fontWeight: "bold" }}>
-											Uses/Parts Used :{" "}
+											Parts Used :{" "}
 										</span>
 										{modal.PartsUsed}
 									</Typography>

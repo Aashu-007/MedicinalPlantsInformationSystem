@@ -18,7 +18,6 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import devs from "../devs";
-import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
 
 const About = () => {
 

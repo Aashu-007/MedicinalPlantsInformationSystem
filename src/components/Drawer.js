@@ -22,7 +22,6 @@ import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useLocation , useHistory} from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import TextField from "@mui/material/TextField";
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 
@@ -106,9 +105,10 @@ const Search = styled('div')(({ theme }) => ({
   },
   marginLeft: 0,
   width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.down('sm')]: {
     marginLeft: theme.spacing(1),
     width: 'auto',
+    display: "none",
   },
 }));
 
