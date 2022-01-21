@@ -10,6 +10,9 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
+import {Link} from 'react-router-dom'
+import IconButton from "@mui/material/IconButton";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
 
 
@@ -46,7 +49,19 @@ const Plants = () => {
 					maxWidth={800}
 					bgcolor="white"
 				>
-				
+				<Box  bgcolor={theme.palette.secondary.main} borderRadius={5} sx={{  position: "fixed", left: 4 }}>
+								<Link
+										to="/"
+										style={{
+											textDecoration: "inherit",
+											color: "inherit",
+										}}
+									>
+								<IconButton size='small' sx={{color:"white",backgroundColor: theme.palette.primary.main}}>
+										<KeyboardBackspaceIcon/>
+								</IconButton>
+								</Link>
+							</Box>
 				<Typography
                         variant="h2"
                         sx={{ flexGrow: 1 }}
@@ -79,15 +94,18 @@ const Plants = () => {
 							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Scientific Name : {plantData.ScientificName}</Typography>
 							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Types : {plantData.Types}</Typography>
 							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Distribution : {plantData.Distribution}</Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Parts Used and Uses : {plantData.PartUseandUses}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Parts Used : {plantData.PartsUsed}</Typography>
 							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Location : {plantData.Location}</Typography>
 						</Grid>
 						<Grid xs={12}>
-							<Typography sx={{pt:2,textAlign:'justify'}} variant="body1">{plantData.Description}</Typography>
+							<Typography color="primary" sx={{pt:2,textAlign:'justify',fontWeight:'bold'}} variant="h6">Description</Typography>
+							<Typography sx={{textAlign:'justify'}} variant="body1">{plantData.Description}</Typography>
+							<Typography color="primary" sx={{pt:2,textAlign:'justify',fontWeight:'bold'}} variant="h6">Uses</Typography>
+							<Typography sx={{textAlign:'justify'}} variant="body1">{plantData.Uses}</Typography>
+							<Typography sx={{pt:2,textAlign:'justify'}} variant="body2">For more details click <a href={plantData.WikiLink} target="_blank">here.</a></Typography>
 						</Grid>
 						<Button variant="contained" color="success" onClick="">Download as PDF</Button>
 					</Grid>
-					
 				</Box>
 			</Container>
 		</>

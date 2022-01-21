@@ -18,8 +18,10 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import devs from "../devs";
+import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
 
 const About = () => {
+
     return (
         <>
             <Container
@@ -84,14 +86,14 @@ const About = () => {
                     <Divider>
                         <Chip label="People Behind This Wonderful Project" />
                     </Divider>
-                    <Grid container spacing={4} sx={{ pt: 2 }}>
+                    <Grid container spacing={3} sx={{ pt: 2 }}>
                         {devs.map((data, index) => {
                             return (
                                 <>
                                     <Grid item xs={12} md={4} sm={6}>
                                         <Card
                                             sx={{
-                                                maxWidth: 300,
+                                                maxWidth: 340,
                                                 borderRadius: 5,
                                                 boxShadow: 3,
                                             }}

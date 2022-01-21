@@ -18,6 +18,13 @@ import theme from "../theme";
 import { Link } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
+import Divider from "@mui/material/Divider";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
+import {useHistory} from 'react-router-dom'
+
 
 const style = {
 	scroll: {
@@ -31,8 +38,19 @@ const style = {
 const GetData = () => {
 	const [plantData, setPlantData] = useState([]);
 
+	// const [search, setSearch] = useState("");
+
+
 	const [open, setOpen] = useState(false);
 	const [modal, setModal] = useState({});
+	
+	// const history = useHistory();
+
+	// const handleSubmitSearch = (e) => {
+	// 	e.preventDefault();
+	// 	history.push(`/search?query=${search}`)
+	// 	setSearch("")
+	// }
 
 	const onOpenModal = (data) => {
 		setModal(data);
@@ -61,10 +79,35 @@ const GetData = () => {
 		});
 	}, []);
 
+
+
 	return (
 		<>
 			<Container disableGutters maxWidth={false} sx={{ p: 5 }}>
 				<Box component="main" sx={{ flexGrow: 1, p: 3, mt: 3 }}>
+					{/*<Box sx={{ paddingBottom: 3 }} maxWidth={800} m="auto">
+						<form onSubmit={handleSubmitSearch}>
+							<TextField
+							fullWidth
+								placeholder="Search…"
+								InputProps={{
+									endAdornment: (
+										<InputAdornment>
+											<IconButton onClick={handleSubmitSearch}>
+												<SearchIcon />
+											</IconButton>
+										</InputAdornment>
+									),
+								}}
+								onChange={(e) => {
+									setSearch(e.target.value)
+									console.log("input : ",e.target.value)
+								}
+								}
+								value={search}
+							/>
+						</form>
+					</Box>*/}
 					<Grid container spacing={4}>
 						{plantData.map((data, index) => {
 							return (
@@ -116,7 +159,7 @@ const GetData = () => {
 													>
 														View
 													</Button>
-													
+
 													<Button size="small">
 														<Link
 															to={`/plant/${data.id}`}
@@ -136,40 +179,70 @@ const GetData = () => {
 								</>
 							);
 						})}
-						{open &&
-													setModal != null ? (
-														<Modal
-															open={open}
-															onClose={
-																onCloseModal
-															}
-															center
-														>
-															<Typography variant="h5" color="secondary">
-															{modal.LocalName}
-															<Typography variant="subtitle1" color="text.primary">
-															<span style={{fontWeight:"bold"}}>Local Name : </span>{modal.LocalName}
-															</Typography>
-															</Typography>
-															<Typography variant="subtitle1" color="text.primary">
-															<span style={{fontWeight:"bold"}}>Scientific Name : </span>{modal.ScientificName}
-															</Typography>
-															<Typography variant="subtitle1" color="text.primary">
-															<span style={{fontWeight:"bold"}}>Distribution : </span>{modal.Distribution}
-															</Typography>
-															<Typography variant="subtitle1" color="text.primary">
-															<span style={{fontWeight:"bold"}}>Types : </span>{modal.Types}
-															</Typography>
-															<Typography variant="subtitle1" color="text.primary">
-															<span style={{fontWeight:"bold"}}>Uses/Parts Used : </span>{modal.PartUseandUses}
-															</Typography>
-															<Typography variant="subtitle1" color="text.primary">
-															<span style={{fontWeight:"bold"}}>Location : </span>{modal.Location}
-															</Typography>
-														</Modal>
-													) : (
-														""
-													)}
+						{open && setModal != null ? (
+							<Modal open={open} onClose={onCloseModal} center>
+								<Typography variant="h4" color="primary">
+									{modal.LocalName}
+								</Typography>
+								<Divider />
+								<Typography
+									variant="subtitle1"
+									color="text.primary"
+								>
+									<span style={{ fontWeight: "bold" }}>
+										Local Name :{" "}
+									</span>
+									{modal.LocalName}
+								</Typography>
+								<Typography
+									variant="subtitle1"
+									color="text.primary"
+								>
+									<span style={{ fontWeight: "bold" }}>
+										Scientific Name :{" "}
+									</span>
+									{modal.ScientificName}
+								</Typography>
+								<Typography
+									variant="subtitle1"
+									color="text.primary"
+								>
+									<span style={{ fontWeight: "bold" }}>
+										Distribution :{" "}
+									</span>
+									{modal.Distribution}
+								</Typography>
+								<Typography
+									variant="subtitle1"
+									color="text.primary"
+								>
+									<span style={{ fontWeight: "bold" }}>
+										Types :{" "}
+									</span>
+									{modal.Types}
+								</Typography>
+								<Typography
+									variant="subtitle1"
+									color="text.primary"
+								>
+									<span style={{ fontWeight: "bold" }}>
+										Parts Used :{" "}
+									</span>
+									{modal.PartsUsed}
+								</Typography>
+								<Typography
+									variant="subtitle1"
+									color="text.primary"
+								>
+									<span style={{ fontWeight: "bold" }}>
+										Location :{" "}
+									</span>
+									{modal.Location}
+								</Typography>
+							</Modal>
+						) : (
+							""
+						)}
 					</Grid>
 				</Box>
 			</Container>

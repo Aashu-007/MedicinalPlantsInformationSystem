@@ -1,0 +1,252 @@
+import React, { useState, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
+import firebase from "../firebase";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import CardActionArea from "@mui/material/CardActionArea";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import theme from "../theme";
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
+import Divider from "@mui/material/Divider";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
+import grey from "@mui/material/colors/grey";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+
+const Search = () => {
+	const [data, setData] = useState({});
+
+	const [open, setOpen] = useState(false);
+	const [modal, setModal] = useState({});
+
+	const onOpenModal = (data) => {
+		setModal(data);
+		setOpen(true);
+	};
+	const onCloseModal = () => setOpen(false);
+
+	const useQuery = () => {
+		return new URLSearchParams(useLocation().search);
+	};
+
+	let Query = useQuery();
+	let search = Query.get("query");
+
+	useEffect(() => {
+		searchData();
+	}, [search]);
+
+	const searchData = () => {
+		const firestore = firebase.database().ref("/PlantDatabase");
+		firestore
+			.orderByChild("LocalName")
+			.equalTo(search)
+			.on("value", (snapshot) => {
+				if (snapshot.val()) {
+					const data = snapshot.val();
+					setData(data);
+					console.log("data:", data);
+				}
+			});
+	};
+
+	return (
+		<>
+			<Container disableGutters maxWidth={false} sx={{ p: 5 }}>
+				<Box sx={{flexGrow: 1, p: 3, mt: 3 }} m="auto">
+					<Box bgcolor={theme.palette.primary.main} borderRadius={5} sx={{  position: "fixed", left: 3 }}>
+								<Link
+										to="/"
+										style={{
+											textDecoration: "inherit",
+											color: "inherit",
+										}}
+									>
+								<IconButton size='small' sx={{color:"white",backgroundColor: theme.palette.primary.main}}>
+								
+										<KeyboardBackspaceIcon/>
+									
+								</IconButton>
+								</Link>
+							</Box>
+					{Object.keys(data).length === 0 ? (
+						<Box m="auto" sx={{ mt: "30vh" ,textAlign:"center"}}>
+							<Typography
+								sx={{ m: "auto", color: grey[500] }}
+								variant="h5"
+								color="text.primary"
+							>
+								No search found with that name :{" "}
+								{Query.get("query")}
+							</Typography>
+						</Box>
+					) : (
+						<Grid container spacing={4}>
+							{Object.keys(data).map((id, index) => {
+								return (
+									<>
+										<Grid
+											item
+											xs={12}
+											md={4}
+											sm={6}
+											lg={3}
+											key={id}
+										>
+											<Card
+												sx={{
+													maxWidth: 275,
+													minWidth: 150,
+												}}
+												raised
+											>
+												<CardActionArea>
+													<CardMedia
+														component="img"
+														alt="plant"
+														height="180"
+														image={data[id].ImgUrl}
+													/>
+													<CardContent>
+														<Typography
+															gutterBottom
+															variant="h6"
+															component="div"
+														>
+															{data[id].LocalName}
+														</Typography>
+														<Typography
+															variant="body2"
+															color="text.secondary"
+														>
+															<LocationOnRoundedIcon
+																color="primary"
+																fontSize="small"
+																sx={{
+																	paddingTop:
+																		"4px",
+																}}
+															/>
+															{data[id].Location}
+														</Typography>
+													</CardContent>
+													<CardActions>
+														<Button
+															size="small"
+															onClick={() =>
+																onOpenModal(
+																	data[id]
+																)
+															}
+														>
+															View
+														</Button>
+
+														<Button size="small">
+															<Link
+																to={`/plant/${id}`}
+																style={{
+																	textDecoration:
+																		"inherit",
+																	color: "inherit",
+																}}
+															>
+																Read More
+															</Link>
+														</Button>
+													</CardActions>
+												</CardActionArea>
+											</Card>
+										</Grid>
+									</>
+								);
+							})}
+
+							{open && setModal != null ? (
+								<Modal
+									open={open}
+									onClose={onCloseModal}
+									center
+								>
+									<Typography variant="h4" color="primary">
+										{modal.LocalName}
+									</Typography>
+									<Divider />
+									<Typography
+										variant="subtitle1"
+										color="text.primary"
+									>
+										<span style={{ fontWeight: "bold" }}>
+											Local Name :{" "}
+										</span>
+										{modal.LocalName}
+									</Typography>
+									<Typography
+										variant="subtitle1"
+										color="text.primary"
+									>
+										<span style={{ fontWeight: "bold" }}>
+											Scientific Name :{" "}
+										</span>
+										{modal.ScientificName}
+									</Typography>
+									<Typography
+										variant="subtitle1"
+										color="text.primary"
+									>
+										<span style={{ fontWeight: "bold" }}>
+											Distribution :{" "}
+										</span>
+										{modal.Distribution}
+									</Typography>
+									<Typography
+										variant="subtitle1"
+										color="text.primary"
+									>
+										<span style={{ fontWeight: "bold" }}>
+											Types :{" "}
+										</span>
+										{modal.Types}
+									</Typography>
+									<Typography
+										variant="subtitle1"
+										color="text.primary"
+									>
+										<span style={{ fontWeight: "bold" }}>
+											Uses/Parts Used :{" "}
+										</span>
+										{modal.PartsUsed}
+									</Typography>
+									<Typography
+										variant="subtitle1"
+										color="text.primary"
+									>
+										<span style={{ fontWeight: "bold" }}>
+											Location :{" "}
+										</span>
+										{modal.Location}
+									</Typography>
+								</Modal>
+							) : (
+								""
+							)}
+						</Grid>
+					)}
+				</Box>
+			</Container>
+		</>
+	);
+};
+
+export default Search;
