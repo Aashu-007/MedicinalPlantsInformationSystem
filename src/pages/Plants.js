@@ -115,7 +115,6 @@ const Plants = () => {
 							<Typography sx={{textAlign:'justify'}} variant="body1">{plantData.Uses}</Typography>
 							<Typography sx={{pt:2,textAlign:'justify'}} variant="body2">For more details click <a href={plantData.WikiLink} target="_blank">here.</a></Typography>
 						</Grid>
-						<Button variant="contained" color="success" onClick="">Download as PDF</Button>
 					</Grid>
 				</Box>
 			</Container>

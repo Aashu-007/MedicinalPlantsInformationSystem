@@ -12,8 +12,6 @@ import { Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 
-// import {BrowserRouter, Route, Switch } from "react-router-dom";
-
 function App() {
   return (
     <>
