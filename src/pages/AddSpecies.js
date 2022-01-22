@@ -12,6 +12,7 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '../theme';
 import Divider from "@mui/material/Divider";
+import Footer from '../components/Footer';
 
 const INITIAL_FORM_STATE = {
     ImgUrl: "",
@@ -186,6 +187,7 @@ const AddSpecies = () => {
                     </Formik>
                 </Box>
             </Container>
+            <Footer/>
         </>
     );
 };

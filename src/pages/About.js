@@ -18,6 +18,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import devs from "../devs";
+import Footer from '../components/Footer';
 
 const About = () => {
 
@@ -204,6 +205,7 @@ const About = () => {
                     </Grid>
                 </Box>
             </Container>
+            <Footer/>
         </>
     );
 };

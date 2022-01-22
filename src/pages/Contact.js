@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '../theme';
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
+import Footer from '../components/Footer';
 
 const INITIAL_FORM_STATE = {
     FName: "",
@@ -126,6 +127,7 @@ const Contact = () => {
                     </Formik>
                 </Box>
             </Container>
+             <Footer/>
         </>
     );
 };

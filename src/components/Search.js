@@ -12,15 +12,11 @@ import Grid from "@mui/material/Grid";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import theme from "../theme";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import Divider from "@mui/material/Divider";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
 import grey from "@mui/material/colors/grey";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useHistory } from "react-router-dom";
@@ -44,11 +40,9 @@ const Search = () => {
 	let Query = useQuery();
 	let search = Query.get("query");
 
-	useEffect(() => {
-		searchData();
-	}, [search]);
+	
 
-	const searchData = () => {
+	useEffect(() => {
 		const firestore = firebase.database().ref("/PlantDatabase");
 		firestore
 			.orderByChild("LocalName")
@@ -60,7 +54,8 @@ const Search = () => {
 					console.log("data:", data);
 				}
 			});
-	};
+	}, [search]);
+
 
 	return (
 		<>
