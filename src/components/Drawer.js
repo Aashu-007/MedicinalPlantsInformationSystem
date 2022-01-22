@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import MailIcon from "@mui/icons-material/Mail";
@@ -20,10 +20,10 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link, useLocation , useHistory} from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
+import { styled, alpha } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 
 import "../App.css";
 
@@ -37,6 +37,48 @@ const useStyles = makeStyles({
   },
 });
 
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "22ch",
+      "&:focus": {
+        width: "30ch",
+      },
+    },
+  },
+}));
+
 const Drawer = () => {
   const classes = useStyles();
   const [search, setSearch] = useState("");
@@ -47,19 +89,17 @@ const Drawer = () => {
 
   const location = useLocation();
 
- 
-
   useEffect(() => {
-    if(location.pathname === "/"){
-      setActiveTab("Home")
-    }else if(location.pathname === "/addspecies"){
-      setActiveTab("Add New Species")
-    }else if(location.pathname === "/contact"){
-      setActiveTab("Contact Us")
-    }else if(location.pathname === "/about"){
-      setActiveTab("About")
+    if (location.pathname === "/") {
+      setActiveTab("Home");
+    } else if (location.pathname === "/addspecies") {
+      setActiveTab("Add New Species");
+    } else if (location.pathname === "/contact") {
+      setActiveTab("Contact Us");
+    } else if (location.pathname === "/about") {
+      setActiveTab("About");
     }
-  }, [location])
+  }, [location]);
 
   const handleMenuClick = () => {
     setOpen(true);
@@ -88,58 +128,13 @@ const Drawer = () => {
     },
   ];
 
-    const history = useHistory();
+  const history = useHistory();
 
-   const handleSubmitSearch = (e) => {
+  const handleSubmitSearch = (e) => {
     e.preventDefault();
-    history.push(`/search?query=${search}`)
-    setSearch("")
-  }
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.down('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-    display: "none",
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '30ch',
-      '&:focus': {
-        width: '30ch',
-      },
-    },
-  },
-}));
-
-
+    history.push(`/search?query=${search}`);
+    setSearch("");
+  };
 
   return (
     <>
@@ -164,31 +159,31 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
           >
             Medicinal & Aromatic Plants of Sikkim
           </Typography>
-          <Typography
+          {/*    <Typography
             variant="h5"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "block", sm: "none" }, ml: -1 }}
           >
             MPIS Sikkim
-          </Typography>
+          </Typography>*/}
           {activeTab === "Home" ? (
             <form onSubmit={handleSubmitSearch}>
               <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-            autoFocus
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search'}}
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
-            />
-          </Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                  onChange={(e) => setSearch(e.target.value)}
+                  value={search}
+                />
+              </Search>
             </form>
-            ):("")}
-          
+          ) : (
+            ""
+          )}
         </Toolbar>
       </AppBar>
       <MUIDrawer

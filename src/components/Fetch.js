@@ -70,7 +70,8 @@ const GetData = () => {
 					LocalName: data[id].LocalName,
 					ScientificName: data[id].ScientificName,
 					Distribution: data[id].Distribution,
-					PartUseandUses: data[id].PartUseandUses,
+					PartsUsed: data[id].PartsUsed,
+					Uses: data[id].Uses,
 					Types: data[id].Types,
 					Location: data[id].Location,
 				});

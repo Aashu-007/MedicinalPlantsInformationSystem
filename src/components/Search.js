@@ -22,14 +22,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import grey from "@mui/material/colors/grey";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { useHistory } from "react-router-dom";
 
 const Search = () => {
 	const [data, setData] = useState({});
 
 	const [open, setOpen] = useState(false);
 	const [modal, setModal] = useState({});
-
+	const history = useHistory();
 	const onOpenModal = (data) => {
 		setModal(data);
 		setOpen(true);
@@ -64,24 +65,29 @@ const Search = () => {
 	return (
 		<>
 			<Container disableGutters maxWidth={false} sx={{ p: 5 }}>
-				<Box sx={{flexGrow: 1, p: 3, mt: 3 }} m="auto">
-					<Box bgcolor={theme.palette.primary.main} borderRadius={5} sx={{  position: "fixed", left: 3 }}>
-								<Link
-										to="/"
-										style={{
-											textDecoration: "inherit",
-											color: "inherit",
-										}}
-									>
-								<IconButton size='small' sx={{color:"white",backgroundColor: theme.palette.primary.main}}>
-								
-										<KeyboardBackspaceIcon/>
-									
-								</IconButton>
-								</Link>
-							</Box>
+				<Box sx={{ flexGrow: 1, p: 3, mt: 3 }} m="auto">
+					<Box
+						maxWidth="auto"
+						bgcolor={theme.palette.secondary.main}
+						borderRadius={5}
+						sx={{ position: "fixed",left:3}}
+					>
+						<IconButton
+							onClick={(e) => {
+								e.preventDefault();
+								history.goBack();
+							}}
+							size="small"
+							sx={{
+								color: "white",
+								backgroundColor: theme.palette.primary.main,
+							}}
+						>
+							<KeyboardBackspaceIcon />
+						</IconButton>
+					</Box>
 					{Object.keys(data).length === 0 ? (
-						<Box m="auto" sx={{ mt: "30vh" ,textAlign:"center"}}>
+						<Box m="auto" sx={{ mt: "30vh", textAlign: "center" }}>
 							<Typography
 								sx={{ m: "auto", color: grey[500] }}
 								variant="h5"

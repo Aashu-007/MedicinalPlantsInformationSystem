@@ -16,7 +16,7 @@ const ErrorPage = () => {
 					<Typography variant="subtitle1">
 						page not found! Seems like not a valid url.
 					</Typography>
-					<Link to="/addspecies" style={{ textDecoration: 'inherit',color:'inherit'}}>
+					<Link to="/" style={{ textDecoration: 'inherit',color:'inherit'}}>
 						<Button fullWidth variant="outlined" color="primary">
 							Go Back to Home
 						</Button>

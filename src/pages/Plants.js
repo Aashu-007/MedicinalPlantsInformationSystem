@@ -14,13 +14,15 @@ import {Link} from 'react-router-dom'
 import IconButton from "@mui/material/IconButton";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { PDFDownloadLink, Document, Page } from '@react-pdf/renderer';
-
+import {useHistory} from 'react-router-dom'
+import PictureAsPdfRoundedIcon from '@mui/icons-material/PictureAsPdfRounded';
 
 const Plants = () => {
 
 	const [plantData, setPlantData] = useState({});
 
 	const { id } = useParams();
+	const history = useHistory();
 
 	useEffect(() => {
 		const firestore = firebase.database().ref(`/PlantDatabase/${id}`);
@@ -49,25 +51,34 @@ const Plants = () => {
 					maxWidth={800}
 					bgcolor="white"
 				>
-				<Box  bgcolor={theme.palette.secondary.main} borderRadius={5} sx={{  position: "fixed", left: 4 }}>
-								<Link
-										to="/"
-										style={{
-											textDecoration: "inherit",
-											color: "inherit",
-										}}
-									>
-								<IconButton size='small' sx={{color:"white",backgroundColor: theme.palette.primary.main}}>
-										<KeyboardBackspaceIcon/>
-								</IconButton>
-								</Link>
-							</Box>
+					<Box
+						bgcolor={theme.palette.secondary.main}
+						borderRadius={5}
+						sx={{ position: "fixed", left: 4 }}
+					>
+						<IconButton
+							onClick={(e) => {
+							e.preventDefault();
+							history.goBack();
+							}}
+							size="small"
+							sx={{ color: "white", backgroundColor: theme.palette.primary.main }}
+						>
+							<KeyboardBackspaceIcon />
+						</IconButton>
+				</Box>
 				<Typography
                         variant="h2"
                         sx={{ flexGrow: 1 }}
                         color="primary"
                     >
                         {plantData.LocalName}
+                        <IconButton color="error" sx={{fontSize:12,float:"right",display:{xs:"none",sm:"block"}}}>
+								<PictureAsPdfRoundedIcon/>Download PDF
+						</IconButton>
+						<IconButton color="error" sx={{fontSize:12,float:"right",display:{xs:"block",sm:"none"}}}>
+								<PictureAsPdfRoundedIcon/>
+						</IconButton>
                     </Typography>
                     <Divider sx={{pt:1}}/>
 					<Grid container sx={{py:2}}>

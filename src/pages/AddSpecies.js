@@ -18,7 +18,8 @@ const INITIAL_FORM_STATE = {
     LocalName: "",
     ScientificName: "",
     Distribution: "",
-    PartUseandUses: "",
+    PartsUsed: "",
+    Uses: "",
     Types: "",
     Location: "",
     Description: "",
@@ -29,11 +30,12 @@ const FORM_VALIDATION = Yup.object().shape({
     LocalName: Yup.string().min(3, "Too Short!").required("required"),
     ScientificName: Yup.string().min(3, "Too Short!").required("required"),
     Distribution: Yup.string().min(5, "Too Short!").required("required"),
-    PartUseandUses: Yup.string().min(5, "Too Short!").required("required"),
+    PartsUsed: Yup.string().min(5, "Too Short!").required("required"),
+    Uses: Yup.string().min(300, "Uses should be of minimum 50 words").required("required"),
     Types: Yup.string().min(3, "Too Short!").required("required"),
     Location: Yup.string().min(4, "Too Short!").required("required"),
     Description: Yup.string()
-        .min(2000, "Should be of minimum 500 words")
+        .min(800, "Description should be of minimum 100 words")
         .required("required"),
 });
 
@@ -135,9 +137,19 @@ const AddSpecies = () => {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Textfield
-                                        name="PartUseandUses"
-                                        label="Uses & Parts Used"
+                                        name="PartsUsed"
+                                        label="Parts Used"
                                         placeholder="eg. roots, leaves, flower etc."
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Textfield
+                                        label="Uses"
+                                        name="Uses"
+                                        fullWidth
+                                        placeholder="Enter Uses here in 50-150 words"
+                                        multiline
+                                        rows={3}
                                     />
                                 </Grid>
                                 <Grid item xs={6}>
@@ -157,6 +169,7 @@ const AddSpecies = () => {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Textfield
+                                        label="Description"
                                         name="Description"
                                         fullWidth
                                         placeholder="Enter the Description here in 500-800 words."
