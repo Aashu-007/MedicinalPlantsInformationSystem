@@ -45,8 +45,8 @@ const notify = () => toast.success("Successfully added!");
 const handleAddPlant = (values, onSubmitProps) => {
     const firestore = firebase.database().ref("/PlantDatabase");
     firestore.push(values);
-    console.log("Form data", values);
-    console.log("Submit props", onSubmitProps);
+    // console.log("Form data", values);
+    // console.log("Submit props", onSubmitProps);
     onSubmitProps.setSubmitting(false);
     onSubmitProps.resetForm();
     // window.location.reload();
@@ -88,7 +88,7 @@ const AddSpecies = () => {
                             display: { xs: "none", sm: "block" },
                         }}
                     >
-                        Discovered a new species?Add them below<span>😉</span>
+                        Discovered a new species?Add them below<span role="img" aria-label="wink">😉</span>
                     </Typography>
                     <Typography
                         variant="h6"
@@ -99,7 +99,7 @@ const AddSpecies = () => {
                             display: { xs: "block", sm: "none" },
                         }}
                     >
-                        Discovered a new species?Add them below<span>😉</span>
+                        Discovered a new species?Add them below<span role="img" aria-label="wink">😉</span>
                     </Typography>
                     <Formik
                         initialValues={{ ...INITIAL_FORM_STATE }}
