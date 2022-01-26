@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/MedicinalPlantsInformationSystem/static/css/main.7c71995e.chunk.css",
-    "main.js": "/MedicinalPlantsInformationSystem/static/js/main.b15f4909.chunk.js",
-    "main.js.map": "/MedicinalPlantsInformationSystem/static/js/main.b15f4909.chunk.js.map",
+    "main.js": "/MedicinalPlantsInformationSystem/static/js/main.db19cefc.chunk.js",
+    "main.js.map": "/MedicinalPlantsInformationSystem/static/js/main.db19cefc.chunk.js.map",
     "runtime-main.js": "/MedicinalPlantsInformationSystem/static/js/runtime-main.e77b4918.js",
     "runtime-main.js.map": "/MedicinalPlantsInformationSystem/static/js/runtime-main.e77b4918.js.map",
     "static/css/2.cd131656.chunk.css": "/MedicinalPlantsInformationSystem/static/css/2.cd131656.chunk.css",
-    "static/js/2.c6fbabc9.chunk.js": "/MedicinalPlantsInformationSystem/static/js/2.c6fbabc9.chunk.js",
-    "static/js/2.c6fbabc9.chunk.js.map": "/MedicinalPlantsInformationSystem/static/js/2.c6fbabc9.chunk.js.map",
+    "static/js/2.98f75d99.chunk.js": "/MedicinalPlantsInformationSystem/static/js/2.98f75d99.chunk.js",
+    "static/js/2.98f75d99.chunk.js.map": "/MedicinalPlantsInformationSystem/static/js/2.98f75d99.chunk.js.map",
     "index.html": "/MedicinalPlantsInformationSystem/index.html",
-    "precache-manifest.20dfbe20b5c391e7d7e27162abf99b55.js": "/MedicinalPlantsInformationSystem/precache-manifest.20dfbe20b5c391e7d7e27162abf99b55.js",
+    "precache-manifest.594b011b25e5c5d35ead6926bc5d0f77.js": "/MedicinalPlantsInformationSystem/precache-manifest.594b011b25e5c5d35ead6926bc5d0f77.js",
     "service-worker.js": "/MedicinalPlantsInformationSystem/service-worker.js",
     "static/css/2.cd131656.chunk.css.map": "/MedicinalPlantsInformationSystem/static/css/2.cd131656.chunk.css.map",
     "static/css/main.7c71995e.chunk.css.map": "/MedicinalPlantsInformationSystem/static/css/main.7c71995e.chunk.css.map",
-    "static/js/2.c6fbabc9.chunk.js.LICENSE.txt": "/MedicinalPlantsInformationSystem/static/js/2.c6fbabc9.chunk.js.LICENSE.txt"
+    "static/js/2.98f75d99.chunk.js.LICENSE.txt": "/MedicinalPlantsInformationSystem/static/js/2.98f75d99.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e77b4918.js",
     "static/css/2.cd131656.chunk.css",
-    "static/js/2.c6fbabc9.chunk.js",
+    "static/js/2.98f75d99.chunk.js",
     "static/css/main.7c71995e.chunk.css",
-    "static/js/main.b15f4909.chunk.js"
+    "static/js/main.db19cefc.chunk.js"
   ]
 }
