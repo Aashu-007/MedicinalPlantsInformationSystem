@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import MailIcon from "@mui/icons-material/Mail";
@@ -11,6 +11,7 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
+  Button
 } from "@mui/material";
 import green from "@mui/material/colors/green";
 
@@ -24,6 +25,7 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { AuthContext } from "../components/Authentication/AuthProvider";
 
 import "../App.css";
 
@@ -80,6 +82,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Drawer = () => {
+  const { user,logout } = useContext(AuthContext);
+
   const classes = useStyles();
   const [search, setSearch] = useState("");
 
@@ -224,6 +228,46 @@ const Drawer = () => {
             );
           })}
         </List>
+        {user ? (
+          <>
+            <Typography
+              variant="body1"
+              color="primary"
+              sx={{ fontSize: 14, backgroundColor: "primary" }}
+            >
+              Signed in : {user && user.email}
+            </Typography>
+            <Button 
+              fullWidth
+              variant="contained"
+              color="primary"
+              sx={{ fontSize: 12, backgroundColor: "primary" }}
+              onClick={logout}
+            >
+              Logout
+            </Button>
+          </>
+        ) : (
+          <Typography
+            variant="body1"
+            sx={{ fontSize: 20,m:"auto", backgroundColor: "primary" }}
+          >
+            <Link
+              to="/login"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+            >
+              Login{" "}
+            </Link>
+            |
+            <Link
+              to="/signup"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+            >
+              {" "}
+              Sign Up
+            </Link>
+          </Typography>
+        )}
       </MUIDrawer>
     </>
   );

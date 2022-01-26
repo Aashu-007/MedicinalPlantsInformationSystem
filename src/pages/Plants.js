@@ -34,8 +34,6 @@ const Plants = () => {
 		});
 	}, [id]);
 
-	console.log("id", id);
-	console.log("data", plantData);
 	return (
 		<>
 			<Container
@@ -114,9 +112,9 @@ const Plants = () => {
 						</Grid>
 						<Grid xs={12}>
 							<Typography color="primary" sx={{pt:2,textAlign:'justify',fontWeight:'bold'}} variant="h6">Description</Typography>
-							<Typography sx={{textAlign:'justify'}} variant="body1">{plantData.Description}</Typography>
+							<Typography sx={{textAlign:'justify', wordWrap:"break-word"}} variant="body1">{plantData.Description}</Typography>
 							<Typography color="primary" sx={{pt:2,textAlign:'justify',fontWeight:'bold'}} variant="h6">Uses</Typography>
-							<Typography sx={{textAlign:'justify'}} variant="body1">{plantData.Uses}</Typography>
+							<Typography sx={{textAlign:'justify', wordWrap:"break-word"}} variant="body1">{plantData.Uses}</Typography>
 						</Grid>
 					</Grid>
 

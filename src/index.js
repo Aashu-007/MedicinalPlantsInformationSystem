@@ -7,9 +7,11 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/MedicinalPlantsInformationSystem">
-      <App />
-    </BrowserRouter>
+    
+      <BrowserRouter basename="/MedicinalPlantsInformationSystem">
+        <App />
+      </BrowserRouter>
+    
   </React.StrictMode>,
   document.getElementById("root")
 );
