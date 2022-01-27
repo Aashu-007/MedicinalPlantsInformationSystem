@@ -21,10 +21,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link, useLocation, useHistory } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
-import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
+import { Link, useLocation} from "react-router-dom";
 import { AuthContext } from "../components/Authentication/AuthProvider";
 
 import "../App.css";
@@ -39,53 +36,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "22ch",
-      "&:focus": {
-        width: "30ch",
-      },
-    },
-  },
-}));
 
 const Drawer = () => {
+
   const { user,logout } = useContext(AuthContext);
 
   const classes = useStyles();
-  const [search, setSearch] = useState("");
 
   const [open, setOpen] = useState(false);
 
@@ -132,13 +89,6 @@ const Drawer = () => {
     },
   ];
 
-  const history = useHistory();
-
-  const handleSubmitSearch = (e) => {
-    e.preventDefault();
-    history.push(`/search?query=${search}`);
-    setSearch("");
-  };
 
   return (
     <>
@@ -163,31 +113,48 @@ const Drawer = () => {
           >
             Medicinal & Aromatic Plants of Sikkim
           </Typography>
-          {/*    <Typography
+              <Typography
             variant="h5"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "block", sm: "none" }, ml: -1 }}
           >
             MPIS Sikkim
-          </Typography>*/}
-          {activeTab === "Home" ? (
-            <form onSubmit={handleSubmitSearch}>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
-                  onChange={(e) => setSearch(e.target.value)}
-                  value={search}
-                />
-              </Search>
-            </form>
-          ) : (
-            ""
-          )}
+          </Typography>
+          {user ? (
+            <>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: 14 }}
+            >
+              Hello, {user && user.email} | {"  "}
+            </Typography>
+            <Button 
+              color="inherit"
+              onClick={logout}
+            >
+              Logout
+            </Button>
+          </>
+          ):(  <Typography
+            variant="body1"
+            sx={{ fontSize: 16,m:"auto", backgroundColor: "primary" }}
+          >
+            <Link
+              to="/login"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+            >
+              LOGIN{"  "}
+            </Link>
+            |
+            <Link
+              to="/signup"
+              style={{ textDecoration: "inherit", color: "inherit" }}
+            >
+              {"  "}
+              SIGNUP
+            </Link>
+          </Typography>)}
         </Toolbar>
       </AppBar>
       <MUIDrawer
@@ -228,46 +195,6 @@ const Drawer = () => {
             );
           })}
         </List>
-        {user ? (
-          <>
-            <Typography
-              variant="body1"
-              color="primary"
-              sx={{ fontSize: 14, backgroundColor: "primary" }}
-            >
-              Signed in : {user && user.email}
-            </Typography>
-            <Button 
-              fullWidth
-              variant="contained"
-              color="primary"
-              sx={{ fontSize: 12, backgroundColor: "primary" }}
-              onClick={logout}
-            >
-              Logout
-            </Button>
-          </>
-        ) : (
-          <Typography
-            variant="body1"
-            sx={{ fontSize: 20,m:"auto", backgroundColor: "primary" }}
-          >
-            <Link
-              to="/login"
-              style={{ textDecoration: "inherit", color: "inherit" }}
-            >
-              Login{" "}
-            </Link>
-            |
-            <Link
-              to="/signup"
-              style={{ textDecoration: "inherit", color: "inherit" }}
-            >
-              {" "}
-              Sign Up
-            </Link>
-          </Typography>
-        )}
       </MUIDrawer>
     </>
   );

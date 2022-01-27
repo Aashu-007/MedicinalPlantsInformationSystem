@@ -20,6 +20,9 @@ import IconButton from "@mui/material/IconButton";
 import grey from "@mui/material/colors/grey";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useHistory } from "react-router-dom";
+import Searchbar from "../components/Searchbar";
+import DataSearch from "../DataSearch.json";
+
 
 const Search = () => {
 	const [data, setData] = useState({});
@@ -59,8 +62,11 @@ const Search = () => {
 
 	return (
 		<>
-			<Container disableGutters maxWidth={false} sx={{ p: 5 }}>
-				<Box sx={{ flexGrow: 1, p: 3, mt: 3 }} m="auto">
+		<Box sx={{ mt: 10, mx: 2 }} maxWidth="100%" m="auto">
+				<Searchbar data={DataSearch} placeholder="Search" />
+			</Box>
+			<Container disableGutters maxWidth={false} sx={{ px: 5,pt:2 }}>
+				<Box sx={{ flexGrow: 1, p: 3, }} m="auto">
 					<Box
 						maxWidth="auto"
 						bgcolor={theme.palette.secondary.main}

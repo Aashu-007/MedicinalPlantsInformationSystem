@@ -19,12 +19,8 @@ import { Link } from "react-router-dom";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import Divider from "@mui/material/Divider";
-// import InputAdornment from "@mui/material/InputAdornment";
-// import SearchIcon from "@mui/icons-material/Search";
-// import IconButton from "@mui/material/IconButton";
-// import TextField from "@mui/material/TextField";
-// import {useHistory} from 'react-router-dom'
-
+import Searchbar from "../components/Searchbar";
+import DataSearch from "../DataSearch.json";
 
 const style = {
 	scroll: {
@@ -37,20 +33,8 @@ const style = {
 
 const GetData = () => {
 	const [plantData, setPlantData] = useState([]);
-
-	// const [search, setSearch] = useState("");
-
-
 	const [open, setOpen] = useState(false);
 	const [modal, setModal] = useState({});
-	
-	// const history = useHistory();
-
-	// const handleSubmitSearch = (e) => {
-	// 	e.preventDefault();
-	// 	history.push(`/search?query=${search}`)
-	// 	setSearch("")
-	// }
 
 	const onOpenModal = (data) => {
 		setModal(data);
@@ -80,36 +64,14 @@ const GetData = () => {
 		});
 	}, []);
 
-
-
 	return (
 		<>
-			<Container disableGutters maxWidth={false} sx={{ p: 5 }}>
-				<Box component="main" sx={{ flexGrow: 1, p: 3, mt: 3 }}>
-					{/*<Box sx={{ paddingBottom: 3 }} maxWidth={800} m="auto">
-						<form onSubmit={handleSubmitSearch}>
-							<TextField
-							fullWidth
-								placeholder="Search…"
-								InputProps={{
-									endAdornment: (
-										<InputAdornment>
-											<IconButton onClick={handleSubmitSearch}>
-												<SearchIcon />
-											</IconButton>
-										</InputAdornment>
-									),
-								}}
-								onChange={(e) => {
-									setSearch(e.target.value)
-									console.log("input : ",e.target.value)
-								}
-								}
-								value={search}
-							/>
-						</form>
-					</Box>*/}
-					<Grid container spacing={4}>
+			<Box sx={{ mt: 10, mx: 2 }} maxWidth="100%" m="auto">
+				<Searchbar data={DataSearch} placeholder="Search" />
+			</Box>
+			<Container disableGutters maxWidth={false} sx={{ px: 5, pt: 3 }}>
+				<Box component="main" sx={{ flexGrow: 1 }}>
+					<Grid container spacing={5}>
 						{plantData.map((data, index) => {
 							return (
 								<>
