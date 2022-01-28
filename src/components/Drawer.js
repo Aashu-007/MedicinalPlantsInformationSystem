@@ -109,7 +109,7 @@ const Drawer = () => {
             variant="h5"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, ml: -1 }}
+            sx={{ flexGrow: 1, display: { xs: "none", md: "block" }, ml: -1 }}
           >
             Medicinal & Aromatic Plants of Sikkim
           </Typography>
@@ -117,18 +117,20 @@ const Drawer = () => {
             variant="h5"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "block", sm: "none" }, ml: -1 }}
+            sx={{ flexGrow: 1, display: { xs: "block", md: "none" }, ml: -1 }}
           >
             MPIS Sikkim
           </Typography>
           {user ? (
             <>
+            <Box sx={{display:{xs:"none",sm:"block"}}}>
             <Typography
               variant="body1"
               sx={{ fontSize: 14 }}
             >
               Hello, {user && user.email} | {"  "}
             </Typography>
+            </Box>
             <Button 
               color="inherit"
               onClick={logout}
@@ -136,25 +138,20 @@ const Drawer = () => {
               Logout
             </Button>
           </>
-          ):(  <Typography
-            variant="body1"
-            sx={{ fontSize: 16,m:"auto", backgroundColor: "primary" }}
+          ):(  
+          <>
+          <Button
+            color="inherit"
           >
             <Link
               to="/login"
               style={{ textDecoration: "inherit", color: "inherit" }}
             >
-              LOGIN{"  "}
+              LOGIN
             </Link>
-            |
-            <Link
-              to="/signup"
-              style={{ textDecoration: "inherit", color: "inherit" }}
-            >
-              {"  "}
-              SIGNUP
-            </Link>
-          </Typography>)}
+          </Button>
+          </>
+          )}
         </Toolbar>
       </AppBar>
       <MUIDrawer
@@ -195,6 +192,9 @@ const Drawer = () => {
             );
           })}
         </List>
+        {user ? (
+          <Typography variant="body1" sx={{fontSize:12,m:"auto",display:{xs:"block",sm:"none"}}}>{user.email}</Typography>
+          ):("")}
       </MUIDrawer>
     </>
   );

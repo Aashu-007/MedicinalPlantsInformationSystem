@@ -40,7 +40,6 @@ const Signup = () => {
 
 	const {user} = useContext(AuthContext);
 
-	console.log(user)
 	const [error, setError] = useState("")
 	const [loading,setLoading] =useState(false);
 
@@ -62,7 +61,7 @@ const Signup = () => {
 			await auth.createUserWithEmailAndPassword(email, password).then(() => {
 				notify();
 				setTimeout(()=>{
-					history.push("/addspecies")
+					history.push("/")
 				},3000)
 			});
 			
@@ -76,17 +75,17 @@ const Signup = () => {
 
 	useEffect(() => {
 		if(user){
-			history.push("/dashboard")
+			history.push("/")
 		}
 	}, [user,history])
 
 
 	return (
 		<>
-			<Container disableGutters maxWidth={false}>
+			<Container disableGutters maxWidth={false} sx={{ pt: 12 }}>
 				<Box
 					component="main"
-					sx={{ flexGrow: 1, p: 3, pt: 4, mt: "15vh" }}
+					sx={{ flexGrow: 1, p: 3, pt: 4 }}
 					maxWidth={300}
 					m="auto"
 					border={1}

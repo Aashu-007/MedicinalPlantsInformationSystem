@@ -66,7 +66,7 @@ const GetData = () => {
 
 	return (
 		<>
-			<Box sx={{ mt: 10, mx: 2 }} maxWidth="100%" m="auto">
+			<Box sx={{ pt: 10, mx: 2}} maxWidth="100%" m="auto">
 				<Searchbar data={DataSearch} placeholder="Search" />
 			</Box>
 			<Container disableGutters maxWidth={false} sx={{ px: 5, pt: 3 }}>

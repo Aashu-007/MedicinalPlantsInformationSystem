@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import { useHistory } from "react-router-dom";
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
+import {AuthContext} from '../components/Authentication/AuthProvider'
 
 const INITIAL_FORM_STATE = {
     email: "",
@@ -30,6 +31,9 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 const Login = () => {
+
+    const {user} = useContext(AuthContext);
+
     const [error, setError] = useState("Login/SignUp to add new species");
     const [loading,setLoading] =useState(false);
 
@@ -50,7 +54,7 @@ const Login = () => {
             await auth.signInWithEmailAndPassword(email, password).then(() => {
                 notify();
                 setTimeout(()=>{
-                    history.push("/addspecies")
+                    history.push("/")
                 },2000)
             });
 
@@ -61,12 +65,18 @@ const Login = () => {
         setLoading(false)
     }
 
+    useEffect(() => {
+        if(user){
+            history.push("/")
+        }
+    }, [user,history])
+
     return (
         <>
-            <Container disableGutters maxWidth={false}>
+            <Container disableGutters maxWidth={false} sx={{ pt: 18 }}>
                 <Box
                     component="main"
-                    sx={{ flexGrow: 1, p: 3, pt: 4, mt: "20vh" }}
+                    sx={{ flexGrow: 1, p: 3, pt: 4 }}
                     maxWidth={300}
                     m="auto"
                     border={1}
