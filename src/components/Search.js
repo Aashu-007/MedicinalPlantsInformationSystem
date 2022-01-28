@@ -63,9 +63,9 @@ const Search = () => {
 	return (
 		<>
 		<Box sx={{ mt: 10, mx: 2 }} maxWidth="100%" m="auto">
-				<Searchbar data={DataSearch} placeholder="Search" />
-			</Box>
-			<Container disableGutters maxWidth={false} sx={{ px: 5,pt:2 }}>
+				<Searchbar data={DataSearch} placeholder="Search.." />
+		</Box>
+			<Container disableGutters maxWidth={false} sx={{ px: 5 }}>
 				<Box sx={{ flexGrow: 1, p: 3, }} m="auto">
 					<Box
 						maxWidth="auto"
@@ -137,14 +137,13 @@ const Search = () => {
 															variant="body2"
 															color="text.secondary"
 														>
-															<LocationOnRoundedIcon
-																color="primary"
-																fontSize="small"
-																sx={{
-																	paddingTop:
-																		"4px",
-																}}
-															/>
+															<span style={{position:"relative",top:4,left:-2}}>
+														<LocationOnRoundedIcon
+															color="error"
+															fontSize="small"
+															
+														/>
+													</span>
 															{data[id].Location}
 														</Typography>
 													</CardContent>

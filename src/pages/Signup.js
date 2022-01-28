@@ -15,6 +15,9 @@ import Alert from '@mui/material/Alert'
 import {useHistory} from 'react-router-dom'
 import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
 import {AuthContext} from '../components/Authentication/AuthProvider'
+import EmailIcon from '@mui/icons-material/Email';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import InputAdornment from '@mui/material/InputAdornment';
 
 
 const INITIAL_FORM_STATE = {
@@ -111,13 +114,30 @@ const Signup = () => {
 								</Typography>
 								<Grid item xs={12}>
 								{error && <Alert severity="error" sx={{mt:-3,mb:1}}>{error}</Alert>}
-									<Textfield name="email" label="Email" />
+									<Textfield 
+										name="email" 
+										label="Email" 
+										InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                  <EmailIcon />
+                                                </InputAdornment>
+                                            ),
+                                        }}
+									/>
 								</Grid>
 								<Grid item xs={12}>
 									<Textfield
 										name="password"
 										label="Password"
 										type="password"
+										InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                  <VisibilityIcon />
+                                                </InputAdornment>
+                                            ),
+                                        }}
 									/>
 								</Grid>
 								<Grid item xs={12}>
@@ -125,6 +145,13 @@ const Signup = () => {
 										name="confirmPassword"
 										label="Confirm Password"
 										type="password"
+										InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                  <VisibilityIcon />
+                                                </InputAdornment>
+                                            ),
+                                        }}
 									/>
 								</Grid>
 

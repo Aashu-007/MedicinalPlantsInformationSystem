@@ -3,20 +3,20 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import InputAdornment from "@mui/material/InputAdornment";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+import IconButton from '@mui/material/IconButton';
 
 const Searchbar = ({ data, placeholder }) => {
-
 	let [search, setSearch] = useState("");
 	const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
 
-	 const history = useHistory();
+	const history = useHistory();
 
- const handleSubmitSearch = (e) => {
-    e.preventDefault();
-    history.push(`/search?query=${search}`);
-    setSearch("");
-  };
+	const handleSubmitSearch = (e) => {
+		e.preventDefault();
+		history.push(`/search?query=${search}`);
+		setSearch("");
+	};
 
 	return (
 		<div>
@@ -26,8 +26,8 @@ const Searchbar = ({ data, placeholder }) => {
 					id="free-solo-2-demo"
 					open={autoCompleteOpen}
 					onInputChange={(event, value, reason) => {
-						setSearch(value)
-						console.log("consoled search",search)
+						setSearch(value);
+						console.log("consoled search", search);
 						switch (reason) {
 							case "input":
 								setAutoCompleteOpen(!!value);
@@ -50,8 +50,14 @@ const Searchbar = ({ data, placeholder }) => {
 							InputProps={{
 								...params.InputProps,
 								type: "search",
+								endAdornment: (
+									<InputAdornment position="end">
+										<IconButton onClick={handleSubmitSearch} aria-label="search">
+											<SearchRoundedIcon />
+										</IconButton>
+									</InputAdornment>
+								),
 							}}
-							
 						/>
 					)}
 				/>

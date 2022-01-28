@@ -15,6 +15,9 @@ import Alert from "@mui/material/Alert";
 import { useHistory } from "react-router-dom";
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import {AuthContext} from '../components/Authentication/AuthProvider'
+import EmailIcon from '@mui/icons-material/Email';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const INITIAL_FORM_STATE = {
     email: "",
@@ -111,13 +114,28 @@ const Login = () => {
                                     )}
                                     <Textfield 
                                         name="email" 
-                                        label="Email" />
+                                        label="Email" 
+                                        InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                  <EmailIcon />
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                    />
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Textfield
                                         name="password"
                                         label="Password"
                                         type="password"
+                                        InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                  <VisibilityIcon />
+                                                </InputAdornment>
+                                            ),
+                                        }}
                                     />
                                 </Grid>
 

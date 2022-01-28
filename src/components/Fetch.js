@@ -67,9 +67,9 @@ const GetData = () => {
 	return (
 		<>
 			<Box sx={{ pt: 10, mx: 2}} maxWidth="100%" m="auto">
-				<Searchbar data={DataSearch} placeholder="Search" />
+				<Searchbar data={DataSearch} placeholder="Search.." />
 			</Box>
-			<Container disableGutters maxWidth={false} sx={{ px: 5, pt: 3 }}>
+			<Container disableGutters maxWidth={false} sx={{ px: 5, py: 3 }}>
 				<Box component="main" sx={{ flexGrow: 1 }}>
 					<Grid container spacing={5}>
 						{plantData.map((data, index) => {
@@ -102,14 +102,13 @@ const GetData = () => {
 														variant="body2"
 														color="text.secondary"
 													>
+													<span style={{position:"relative",top:4,left:-2}}>
 														<LocationOnRoundedIcon
 															color="primary"
 															fontSize="small"
-															sx={{
-																paddingTop:
-																	"4px",
-															}}
+															
 														/>
+													</span>
 														{data.Location}
 													</Typography>
 												</CardContent>
