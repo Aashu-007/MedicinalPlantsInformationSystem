@@ -66,11 +66,13 @@ const GetData = () => {
 
 	return (
 		<>
-			<Box sx={{ pt: 10, mx: 2}} maxWidth="100%" m="auto">
-				<Searchbar data={DataSearch} placeholder="Search.." />
-			</Box>
+			<Container sx={{ mx: 2,position:"fixed",zIndex:999}} maxWidth="100%">
+				<Box bgcolor="white" sx={{ pt: 10,mr:3,pb:1 }} m="auto">
+					<Searchbar data={DataSearch} placeholder="Search.."/>
+				</Box>
+			</Container>
 			<Container disableGutters maxWidth={false} sx={{ px: 5, py: 3 }}>
-				<Box component="main" sx={{ flexGrow: 1 }}>
+				<Box component="main" sx={{ flexGrow: 1 ,px:3,pt:17}}>
 					<Grid container spacing={5}>
 						{plantData.map((data, index) => {
 							return (

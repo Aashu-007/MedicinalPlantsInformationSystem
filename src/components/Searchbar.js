@@ -6,7 +6,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useHistory } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 
+
 const Searchbar = ({ data, placeholder }) => {
+
+
 	let [search, setSearch] = useState("");
 	const [autoCompleteOpen, setAutoCompleteOpen] = useState(false);
 
