@@ -121,7 +121,7 @@ const Drawer = () => {
           >
             MPIS Sikkim
           </Typography>
-          {user ? (
+          {user && user.emailVerified ? (
             <>
             <Box sx={{display:{xs:"none",sm:"block"}}}>
             <Typography
@@ -192,7 +192,7 @@ const Drawer = () => {
             );
           })}
         </List>
-        {user ? (
+        {user && user.emailVerified ? (
           <Typography variant="body1" sx={{fontSize:12,m:"auto",display:{xs:"block",sm:"none"}}}>{user.email}</Typography>
           ):("")}
       </MUIDrawer>

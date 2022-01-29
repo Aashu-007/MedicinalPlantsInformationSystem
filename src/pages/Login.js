@@ -13,11 +13,11 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import { useHistory } from "react-router-dom";
-import LockRoundedIcon from '@mui/icons-material/LockRounded';
-import {AuthContext} from '../components/Authentication/AuthProvider'
-import EmailIcon from '@mui/icons-material/Email';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import InputAdornment from '@mui/material/InputAdornment';
+import LockRoundedIcon from "@mui/icons-material/LockRounded";
+import { AuthContext } from "../components/Authentication/AuthProvider";
+import EmailIcon from "@mui/icons-material/Email";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const INITIAL_FORM_STATE = {
     email: "",
@@ -34,45 +34,49 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 const Login = () => {
-
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const [error, setError] = useState("Login/SignUp to add new species");
-    const [loading,setLoading] =useState(false);
+    const [loading, setLoading] = useState(false);
 
     const history = useHistory();
 
     const notify = () => toast.success("Login successful. Redirecting !");
 
-    const handleSubmit = ({email,password}, onSubmitProps) => {
-        console.log(email,password);
-        login(email,password)
+    const handleSubmit = ({ email, password }, onSubmitProps) => {
+        console.log(email, password);
+        login(email, password);
         // console.log(onSubmitProps);
     };
 
-    async function login(email,password){
-    try {
-            setError("")
-            setLoading(true)
-            await auth.signInWithEmailAndPassword(email, password).then(() => {
-                notify();
-                setTimeout(()=>{
-                    history.push("/")
-                },2000)
+    async function login(email, password) {
+        try {
+            setError("");
+            setLoading(true);
+            await auth.signInWithEmailAndPassword(email, password).then((userCred) => {
+                if (user.emailVerified === false) {
+                    userCred.user.sendEmailVerification();
+                    auth.signOut();
+                    setError("please verify your email to login");
+                } else {
+                    notify();
+                    setTimeout(() => {
+                        history.push("/");
+                    }, 3000);
+                }
             });
-
         } catch (err) {
-            console.log(err.message)
-            setError("email or password invalid.")
+            console.log(err.message);
+            setError("email or password invalid.");
         }
-        setLoading(false)
+        setLoading(false);
     }
 
     useEffect(() => {
-        if(user){
-            history.push("/")
+        if (user && user.emailVerified) {
+            history.push("/");
         }
-    }, [user,history])
+    }, [user, history]);
 
     return (
         <>
@@ -112,13 +116,13 @@ const Login = () => {
                                             {error}
                                         </Alert>
                                     )}
-                                    <Textfield 
-                                        name="email" 
-                                        label="Email" 
+                                    <Textfield
+                                        name="email"
+                                        label="Email"
                                         InputProps={{
                                             endAdornment: (
                                                 <InputAdornment position="end">
-                                                  <EmailIcon />
+                                                    <EmailIcon />
                                                 </InputAdornment>
                                             ),
                                         }}
@@ -132,7 +136,7 @@ const Login = () => {
                                         InputProps={{
                                             endAdornment: (
                                                 <InputAdornment position="end">
-                                                  <VisibilityIcon />
+                                                    <VisibilityIcon />
                                                 </InputAdornment>
                                             ),
                                         }}
@@ -140,7 +144,12 @@ const Login = () => {
                                 </Grid>
 
                                 <Grid item xs={12}>
-                                    <Button startIcon={<LockRoundedIcon/>} disabled={loading}>Login</Button>
+                                    <Button
+                                        startIcon={<LockRoundedIcon />}
+                                        disabled={loading}
+                                    >
+                                        Login
+                                    </Button>
                                     <Typography
                                         variant="body2"
                                         color="text.primary"

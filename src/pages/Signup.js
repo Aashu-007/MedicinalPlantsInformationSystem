@@ -42,13 +42,12 @@ const FORM_VALIDATION = Yup.object().shape({
 const Signup = () => {
 
 	const {user} = useContext(AuthContext);
-
 	const [error, setError] = useState("")
 	const [loading,setLoading] =useState(false);
 
 	const history = useHistory();
 
-	const notify = () => toast.success("successfully registered. Redirecting !");
+	const notify = () => toast.success("successfully registered.!");
 
 	const handleSubmit = ({ email, password }, onSubmitProps) => {
 		console.log(email, password);
@@ -61,23 +60,23 @@ const Signup = () => {
 	try {
 			setError("")
             setLoading(true)
-			await auth.createUserWithEmailAndPassword(email, password).then(() => {
+			await auth.createUserWithEmailAndPassword(email, password).then((userCred) => {
+				userCred.user.sendEmailVerification();
+				auth.signOut();
+				setError("email verification sent, please verify first and login")
 				notify();
-				setTimeout(()=>{
-					history.push("/")
-				},3000)
 			});
 			
 
 		} catch (err) {
-			console.log(err.message)
+			// console.log(err.message)
 			setError(err.message)
 		}
 		setLoading(false)
 	}
 
 	useEffect(() => {
-		if(user){
+		if(user && user.emailVerified){
 			history.push("/")
 		}
 	}, [user,history])

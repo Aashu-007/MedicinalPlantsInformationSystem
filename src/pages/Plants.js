@@ -72,7 +72,7 @@ const Plants = () => {
                         {plantData.LocalName}
                         <PDFDownloadLink document={<Doc plantData={plantData}/>} filename="download.pdf">
                         <IconButton color="error" sx={{fontSize:12,float:"right",display:{xs:"none",sm:"block"}}}>
-								<PictureAsPdfRoundedIcon/>Download PDF
+								<PictureAsPdfRoundedIcon/><span style={{position:"relative",top:-8,left: 2}}>Download</span>
 						</IconButton>
 						</PDFDownloadLink>
 						<PDFDownloadLink document={<Doc plantData={plantData}/>} filename="download.pdf">

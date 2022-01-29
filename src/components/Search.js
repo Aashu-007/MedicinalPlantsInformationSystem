@@ -23,7 +23,6 @@ import { useHistory } from "react-router-dom";
 import Searchbar from "../components/Searchbar";
 import DataSearch from "../DataSearch.json";
 
-
 const Search = () => {
 	const [data, setData] = useState({});
 
@@ -43,8 +42,6 @@ const Search = () => {
 	let Query = useQuery();
 	let search = Query.get("query");
 
-	
-
 	useEffect(() => {
 		const firestore = firebase.database().ref("/PlantDatabase");
 		firestore
@@ -59,19 +56,23 @@ const Search = () => {
 			});
 	}, [search]);
 
-
 	return (
 		<>
-		<Box sx={{ mt: 10, mx: 2 }} maxWidth="100%" m="auto">
-				<Searchbar data={DataSearch} placeholder="Search.." />
-		</Box>
+			<Container
+				sx={{ mx: 2, position: "fixed", zIndex: 999 }}
+				maxWidth="100%"
+			>
+				<Box bgcolor="white" sx={{ pt: 10, mr: 3, pb: 1 }} m="auto">
+					<Searchbar data={DataSearch} placeholder="Search.." />
+				</Box>
+			</Container>
 			<Container disableGutters maxWidth={false} sx={{ px: 5 }}>
-				<Box sx={{ flexGrow: 1, p: 3, }} m="auto">
+				<Box sx={{ flexGrow: 1, p: 3, pt: 21 }} m="auto">
 					<Box
 						maxWidth="auto"
 						bgcolor={theme.palette.secondary.main}
 						borderRadius={5}
-						sx={{ position: "fixed",left:3}}
+						sx={{ position: "fixed", left: 3 }}
 					>
 						<IconButton
 							onClick={(e) => {
@@ -137,13 +138,19 @@ const Search = () => {
 															variant="body2"
 															color="text.secondary"
 														>
-															<span style={{position:"relative",top:4,left:-2}}>
-														<LocationOnRoundedIcon
-															color="error"
-															fontSize="small"
-															
-														/>
-													</span>
+															<span
+																style={{
+																	position:
+																		"relative",
+																	top: 4,
+																	left: -2,
+																}}
+															>
+																<LocationOnRoundedIcon
+																	color="primary"
+																	fontSize="small"
+																/>
+															</span>
 															{data[id].Location}
 														</Typography>
 													</CardContent>
