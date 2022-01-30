@@ -67,7 +67,7 @@ const GetData = () => {
 	return (
 		<>
 			<Container sx={{ mx: 2,position:"fixed",zIndex:999}} maxWidth="100%">
-				<Box bgcolor="white" sx={{ pt: 10,mr:3,pb:1 }} m="auto">
+				<Box bgcolor="white" sx={{ pt: 10,mr:4,pb:1 }} m="auto">
 					<Searchbar data={DataSearch} placeholder="Search.."/>
 				</Box>
 			</Container>
