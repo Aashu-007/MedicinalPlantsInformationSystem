@@ -30,7 +30,7 @@ const Searchbar = ({ data, placeholder }) => {
 					open={autoCompleteOpen}
 					onInputChange={(event, value, reason) => {
 						setSearch(value);
-						console.log("consoled search", search);
+						// console.log("consoled search", search);
 						switch (reason) {
 							case "input":
 								setAutoCompleteOpen(!!value);

@@ -18,6 +18,7 @@ import {AuthContext} from '../components/Authentication/AuthProvider'
 import EmailIcon from '@mui/icons-material/Email';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import InputAdornment from '@mui/material/InputAdornment';
+import useMounted from '../hooks/useMounted'
 
 
 const INITIAL_FORM_STATE = {
@@ -42,16 +43,19 @@ const FORM_VALIDATION = Yup.object().shape({
 const Signup = () => {
 
 	const {user} = useContext(AuthContext);
+	const mounted = useMounted()
+
 	const [error, setError] = useState("")
-	const [loading,setLoading] =useState(false);
+	const [loading,setLoading] = useState(false);
 
 	const history = useHistory();
 
 	const notify = () => toast.success("successfully registered.!");
 
 	const handleSubmit = ({ email, password }, onSubmitProps) => {
-		console.log(email, password);
+		// console.log(email, password);
 		signup(email,password);
+		onSubmitProps.resetForm();
 		// console.log(onSubmitProps);
 		
 	};
@@ -72,7 +76,9 @@ const Signup = () => {
 			// console.log(err.message)
 			setError(err.message)
 		}
-		setLoading(false)
+		if(mounted.current === true){
+            setLoading(false);
+        }
 	}
 
 	useEffect(() => {

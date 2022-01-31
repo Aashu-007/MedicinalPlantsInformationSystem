@@ -13,66 +13,50 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import { useHistory } from "react-router-dom";
-import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import { AuthContext } from "../components/Authentication/AuthProvider";
 import EmailIcon from "@mui/icons-material/Email";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import InputAdornment from "@mui/material/InputAdornment";
 import useMounted from '../hooks/useMounted'
 import Divider from '@mui/material/Divider'
 
 const INITIAL_FORM_STATE = {
     email: "",
-    password: "",
 };
 
 const FORM_VALIDATION = Yup.object().shape({
     email: Yup.string()
         .email("please enter a valid email")
         .required("required"),
-    password: Yup.string()
-        .min(8, "password must be atleast 8 characters long")
-        .required("required"),
 });
 
-const Login = () => {
-    
+const ForgotPswd = () => {
+
     const { user } = useContext(AuthContext);
 
     const mounted = useMounted()
 
-    const [error, setError] = useState("Login/SignUp to add new species");
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
     const history = useHistory();
 
-    const notify = () => toast.success("Login successful. Redirecting !");
+    const notify = () => toast.success("Password reset link sent.");
 
-    const handleSubmit = ({ email, password }, onSubmitProps) => {
-        console.log(email, password);
-        login(email, password);
-        // console.log(onSubmitProps);
+    const handleSubmit = ({email}, onSubmitProps) => {
+        frgtPswd(email);
     };
 
-    async function login(email, password) {
+    async function frgtPswd(email) {
         try {
             setError("");
             setLoading(true);
-            await auth.signInWithEmailAndPassword(email, password).then((userCred) => {
-                if (user.emailVerified === false) {
-                    userCred.user.sendEmailVerification();
-                    auth.signOut();
-                    setError("please verify your email to login");
-                } else {
-                    notify();
-                    setTimeout(() => {
-                        history.push("/");
-                    }, 3000);
-                }
-            });
+            await auth.sendPasswordResetEmail(email,{url: 'https://aashu-007.github.io/MedicinalPlantsInformationSystem/login'}).then(res=>{
+                setError("A link to reset your password has been sent to your email");
+                notify()
+            })
         } catch (err) {
             console.log(err.message);
-            setError("email or password invalid.");
+            setError("There's no account with this email.");
         }
         if(mounted.current === true){
             setLoading(false);
@@ -109,10 +93,10 @@ const Login = () => {
                             <Grid container spacing={4}>
                                 <Typography
                                     variant="h3"
-                                    sx={{ pl: 4, pt: 2 }}
+                                    sx={{ pl: 4, pt: 2,fontSize:35 }}
                                     color="primary"
                                 >
-                                    Login
+                                    Forgot Password
                                 </Typography>
                                 <Grid item xs={12}>
                                     {error && (
@@ -136,53 +120,22 @@ const Login = () => {
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Textfield
-                                        name="password"
-                                        label="Password"
-                                        type="password"
-                                        InputProps={{
-                                            endAdornment: (
-                                                <InputAdornment position="end">
-                                                    <VisibilityIcon />
-                                                </InputAdornment>
-                                            ),
-                                        }}
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12}>
                                     <Button
-                                        startIcon={<LockRoundedIcon />}
                                         disabled={loading}
                                     >
-                                        Login
+                                        Submit
                                     </Button>
+                                    <Divider sx={{pt:2}}>OR</Divider>
                                     <Typography
                                         variant="body2"
                                         color="text.primary"
-                                        sx={{ pt: 2,pb:1 }}
+                                        sx={{ m:"auto",pt:1 ,textAlign:"center",fontSize:16}}
                                     >
-                                     <Link
-                                            to="/forgotPswd"
-                                            style={{ color: "green" }}
-                                        >
-                                              forgot password?
-                                        </Link>
-                                      
-                                    </Typography>
-                                    <Divider/>
-                                    <Typography
-                                        variant="body2"
-                                        color="text.primary"
-                                        sx={{ float: "right",py:1 }}
-                                    >
-                                        Don't have an account?{" "}
                                         <Link
-                                            to="/signup"
-                                            style={{ color: "green" }}
+                                            to="/login"
+                                            style={{ color: "green",textDecoration:"none" }}
                                         >
-                                            {" "}
-                                            Sign Up.
+                                            Login
                                         </Link>
                                     </Typography>
                                     <ToastContainer position="bottom-center" />
@@ -196,4 +149,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ForgotPswd;

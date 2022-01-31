@@ -34,7 +34,7 @@ const notify = () => toast.success("Successfully sent.");
 const handleSendMsg = (values, onSubmitProps) => {
     const firestore = firebase.database().ref("/Contact");
     firestore.push(values);
-    console.log("Form data", values);
+    // console.log("Form data", values);
     // console.log("Submit props", onSubmitProps);
     onSubmitProps.setSubmitting(false);
     onSubmitProps.resetForm();

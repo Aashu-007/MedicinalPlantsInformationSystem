@@ -51,7 +51,7 @@ const Search = () => {
 				if (snapshot.val()) {
 					const data = snapshot.val();
 					setData(data);
-					console.log("data:", data);
+					// console.log("data:", data);
 				}
 			});
 	}, [search]);

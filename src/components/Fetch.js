@@ -21,6 +21,8 @@ import "react-responsive-modal/styles.css";
 import Divider from "@mui/material/Divider";
 import Searchbar from "../components/Searchbar";
 import DataSearch from "../DataSearch.json";
+import CircularProgress from '@mui/material/CircularProgress';
+import Pagination from '@mui/material/Pagination';
 
 const style = {
 	scroll: {
@@ -35,6 +37,8 @@ const GetData = () => {
 	const [plantData, setPlantData] = useState([]);
 	const [open, setOpen] = useState(false);
 	const [modal, setModal] = useState({});
+	const [loading, setLoading] = useState(false)
+	const [page, setPage] = useState(1)
 
 	const onOpenModal = (data) => {
 		setModal(data);
@@ -43,6 +47,8 @@ const GetData = () => {
 	const onCloseModal = () => setOpen(false);
 
 	useEffect(() => {
+		setLoading(true);
+		console.log("Loading 1",loading)
 		const firestore = firebase.database().ref("/PlantDatabase");
 		firestore.on("value", (response) => {
 			const data = response.val();
@@ -61,8 +67,10 @@ const GetData = () => {
 				});
 			}
 			setPlantData(PlantsInfo);
+			setLoading(false);
 		});
-	}, []);
+		console.log("Loading 2",loading)
+	}, [loading]);
 
 	return (
 		<>
@@ -73,8 +81,16 @@ const GetData = () => {
 			</Container>
 			<Container disableGutters maxWidth={false} sx={{ px: 5, py: 3 }}>
 				<Box component="main" sx={{ flexGrow: 1 ,px:3,pt:17}}>
-					<Grid container spacing={5}>
-						{plantData.map((data, index) => {
+					{loading ? 
+						(
+							<Box sx={{display:"flex",justifyContent:"center",maxWidth:"500",mt:"25vh"}}>
+								<CircularProgress color="success" />
+							</Box>
+						):
+						(
+							<>
+								<Grid container spacing={5}>
+						{plantData.slice((page-1)*16,(page-1)*16+16).map((data, index) => {
 							return (
 								<>
 									<Grid item xs={12} md={4} sm={6} lg={3}>
@@ -208,6 +224,17 @@ const GetData = () => {
 							""
 						)}
 					</Grid>
+					<Pagination
+						sx={{display:"flex",justifyContent:"center",width:"100%",pt:2,mt:2}}
+						color="primary"
+						count={(plantData?.length/15).toFixed(0)}
+						onChange={(_,value) => {
+							setPage(value);
+							window.scroll(0,0);
+						}}
+					/>
+							</>
+						)}
 				</Box>
 			</Container>
 

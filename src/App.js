@@ -9,6 +9,7 @@ import Error from "./pages/ErrorPage";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Plants from './pages/Plants';
+import forgotPswd from './pages/forgotPswd'
 import Search from './components/Search'
 import Dashboard from './pages/Dashboard'
 import { Switch, Route } from "react-router-dom";
@@ -33,6 +34,7 @@ function App() {
           <Route exaxt path="/search" component={Search}/>
           <Route exaxt path="/signup" component={Signup}/>
           <Route exaxt path="/login" component={Login}/>
+          <Route exaxt path="/forgotPswd" component={forgotPswd}/>
           <Route exaxt path="/dashboard" component={Dashboard}/>
           <Route component={Error} />
         </Switch>
