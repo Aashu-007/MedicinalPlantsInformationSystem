@@ -1,36 +1,212 @@
-import React,{useContext} from "react";
-import Button from "@mui/material/Button";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
-import {AuthContext} from '../components/Authentication/AuthProvider'
-import Searchbar from '../components/Searchbar'
-import DataSearch from '../DataSearch.json'
+import Button from "@mui/material/Button";
+import BarChart from "../components/Charts/BarChart";
+import PieChart from "../components/Charts/PieChart";
+import LineChart from "../components/Charts/LineChart";
+import { PlantLocationData } from "../Data/PlantLocationData";
+import { PlantTypesData } from "../Data/PlantTypesData";
+import { PartsUsedData } from "../Data/PartsUsedData";
+import { PlantHeightData } from "../Data/PlantHeightData";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import theme from "../theme";
+import {useHistory} from 'react-router-dom'
 
 const Dashboard = () => {
-	const {logout,user} = useContext(AuthContext);
+
+	const history = useHistory()
+
+	const [plantLocData, setPlantLocData] = useState({
+		labels: PlantLocationData.map((data) => data.District),
+		datasets: [
+			{
+				label: "No. of Plants",
+				data: PlantLocationData.map((data) => data.NoOfPlants),
+				backgroundColor: [
+					"rgba(255, 99, 132, 0.5)",
+					"rgba(54, 162, 235, 0.5)",
+					"rgba(255, 206, 86, 0.5)",
+					"rgba(153, 102, 255, 0.5)",
+				],
+				borderColor: [
+					"rgba(255,99,132,1)",
+					"rgba(54, 162, 235, 1)",
+					"rgba(255, 206, 86, 1)",
+					"rgba(153, 102, 255, 1)",
+				],
+				borderWidth: 1,
+			},
+		],
+	});
+
+	const [plantTypeData, setPlantTypeData] = useState({
+		labels: PlantTypesData.map((data) => data.Type),
+		datasets: [
+			{
+				label: "Total Count",
+				data: PlantTypesData.map((data) => data.Count),
+				backgroundColor: [
+					"rgba(255, 99, 132, 0.7)",
+					"rgba(54, 162, 235, 0.7)",
+					"rgba(255, 206, 86, 0.7)",
+					"rgba(153, 102, 255, 0.7)",
+					"rgba(24, 101, 86, 0.7)",
+					"rgba(100, 255, 100, 0.7)",
+				],
+				borderColor: [
+					"rgba(255,99,132,1)",
+					"rgba(54, 162, 235, 1)",
+					"rgba(255, 206, 86, 1)",
+					"rgba(153, 102, 255, 1)",
+					"rgba(24, 101, 86, 1)",
+					"rgba(100, 255, 100, 1)",
+				],
+				borderWidth: 1,
+			},
+		],
+	});
+
+	const [partUsedData, setPartUsedData] = useState({
+		labels: PartsUsedData.map((data) => data.Part),
+		datasets: [
+			{
+				label: "Total Count",
+				data: PartsUsedData.map((data) => data.Count),
+				backgroundColor: [
+					"rgba(255, 99, 132, 0.5)",
+					"rgba(54, 162, 235, 0.5)",
+					"rgba(255, 206, 86, 0.5)",
+					"rgba(153, 102, 255, 0.5)",
+					"rgba(24, 101, 86, 0.5)",
+					"rgba(100, 255, 100, 0.5)",
+					"rgba(20, 25, 65, 0.5)",
+				],
+				borderColor: [
+					"rgba(255,99,132,1)",
+					"rgba(54, 162, 235, 1)",
+					"rgba(255, 206, 86, 1)",
+					"rgba(153, 102, 255, 1)",
+					"rgba(24, 101, 86, 1)",
+					"rgba(100, 255, 100, 1)",
+					"rgba(20, 25, 65, 1)",
+				],
+				borderWidth: 1,
+			},
+		],
+	});
+
+	const [plantHeightData, setPlantHeightData] = useState({
+		labels: PlantHeightData.map((data) => data.Height),
+		datasets: [
+			{
+				label: "No of Plants",
+				data: PlantHeightData.map((data) => data.NoOfPlants),
+				backgroundColor: [
+					"rgba(255, 99, 132, 0.5)",
+					"rgba(54, 162, 235, 0.5)",
+					"rgba(255, 206, 86, 0.5)",
+					"rgba(153, 102, 255, 0.5)",
+					"rgba(24, 101, 86, 0.5)",
+					"rgba(100, 255, 100, 0.5)",
+					"rgba(20, 25, 65, 0.5)",
+				],
+				borderColor: [
+					"rgba(255,99,132,1)",
+					"rgba(54, 162, 235, 1)",
+					"rgba(255, 206, 86, 1)",
+					"rgba(153, 102, 255, 1)",
+					"rgba(24, 101, 86, 1)",
+					"rgba(100, 255, 100, 1)",
+					"rgba(20, 25, 65, 1)",
+				],
+				borderWidth: 1,
+			},
+		],
+	});
+
 
 	return (
-		<div>
-			<br />
-			<br />
-			<br /> <br /> <br />
-			<Typography variant="h4" color="primary">
-			Hello {user && user.email}
-			{user && console.log(user.email)}
-			</Typography>
-			<br/> <br/>
-			<Searchbar data={DataSearch} placeholder="Search" />
-			<br/> <br/>
-			<Button variant="contained"
-				
+		<>
+			<Container
+				style={{ backgroundColor: theme.palette.primary.optional }}
+				disableGutters
+				maxWidth={false}
 			>
-				console
-			</Button>
-			<Button variant="contained"
-				onClick={logout}
-			>
-				Logout
-			</Button>
-		</div>
+				<Box
+					component="main"
+					sx={{ flexGrow: 1, p: 2, boxShadow: 1, pt: 8,pb:5 }}
+					maxWidth="85%"
+					m="auto"
+					bgcolor="white"
+				>
+					<Typography
+						variant="h2"
+						color="primary"
+						sx={{ textAlign: "center", py: 2 }}
+					>
+						OVERVIEW
+					</Typography>
+					<Grid container spacing={2}>
+						<Grid item xs={12} sm={4} md={4}>
+							<Paper sx={{boxShadow:3,height:"100%",backgroundColor:"rgba(100, 255, 100, 0.1)"}}>
+							<Typography
+								color="gray"
+								variant="h6"
+								sx={{ textAlign: "center" }}
+							>
+								LOCATION
+							</Typography>
+							<PieChart chartData={plantLocData} />
+							</Paper>
+						</Grid>
+						<Grid item xs={12} sm={8} md={8}>
+							<Paper sx={{boxShadow:3,backgroundColor:"rgba(255, 99, 132, 0.2)"}}>
+							<Typography
+								color="gray"
+								variant="h6"
+								sx={{ textAlign: "center" }}
+							>
+								PARTS USED
+							</Typography>
+							<BarChart chartData={partUsedData} />
+							</Paper>
+						</Grid>
+						<Grid item xs={12} sm={12} md={6}>
+							<Paper sx={{boxShadow:3,backgroundColor:"rgba(255, 206, 86, 0.3)"}}>
+							<Typography
+								color="gray"
+								variant="h6"
+								sx={{ textAlign: "center" }}
+							>
+								TYPES
+							</Typography>
+							<LineChart chartData={plantTypeData} />
+							</Paper>
+						</Grid>
+						<Grid item xs={12} sm={12} md={6}>
+							<Paper sx={{boxShadow:3,backgroundColor:"rgba(20, 25, 65, 0.1)"}}>
+							<Typography
+								color="gray"
+								variant="h6"
+								sx={{ textAlign: "center" }}
+							>
+								HEIGHT
+							</Typography>
+							<BarChart chartData={plantHeightData} />
+							</Paper>
+						</Grid>
+					</Grid>
+					<Box sx={{display:"flex",justifyContent:"center",mt:5}}>
+					<Button size="large" variant="outlined" color="secondary" onClick={()=>history.push("/explorespecies")}>
+						Explore Plants
+					</Button>
+					</Box>
+				</Box>
+			</Container>
+		</>
 	);
 };
 

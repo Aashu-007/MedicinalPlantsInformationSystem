@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Drawer from "./components/Drawer";
-import Home from "./components/Fetch";
+import Explore from "./components/Fetch";
 import AddSpecies from "./pages/AddSpecies";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
@@ -26,7 +26,8 @@ function App() {
         <AuthProvider>
         <Drawer />
         <Switch>
-          <Route exact from="/" component={Home} />
+          <Route exact path="/" component={Dashboard} />
+          <Route exaxt path="/explorespecies" component={Explore}/>
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <ProtectedRoute exact path="/addspecies" component={AddSpecies} />
@@ -35,7 +36,6 @@ function App() {
           <Route exaxt path="/signup" component={Signup}/>
           <Route exaxt path="/login" component={Login}/>
           <Route exaxt path="/forgotPswd" component={forgotPswd}/>
-          <Route exaxt path="/dashboard" component={Dashboard}/>
           <Route component={Error} />
         </Switch>
         </AuthProvider>

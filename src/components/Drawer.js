@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoIcon from "@mui/icons-material/Info";
 import MailIcon from "@mui/icons-material/Mail";
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { makeStyles } from "@mui/styles";
 import {
@@ -53,6 +54,8 @@ const Drawer = () => {
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveTab("Home");
+    } else if (location.pathname === "/explorespecies") {
+      setActiveTab("Explore Plants");
     } else if (location.pathname === "/addspecies") {
       setActiveTab("Add New Species");
     } else if (location.pathname === "/contact") {
@@ -71,6 +74,11 @@ const Drawer = () => {
       text: "Home",
       icon: <HomeIcon style={{ color: green[50] }} />,
       path: "/",
+    },
+     {
+      text: "Explore Plants",
+      icon: <TravelExploreIcon style={{ color: green[50] }} />,
+      path: "/explorespecies",
     },
     {
       text: "Add New Species",
