@@ -112,6 +112,9 @@ const Dashboard = () => {
 					"rgba(24, 101, 86, 0.5)",
 					"rgba(100, 255, 100, 0.5)",
 					"rgba(20, 25, 65, 0.5)",
+					"rgba(98, 151, 35, 0.5)",
+					"rgba(19, 255, 239, 0.5)",
+					"rgba(205, 251, 65, 0.5)",
 				],
 				borderColor: [
 					"rgba(255,99,132,1)",
@@ -121,6 +124,9 @@ const Dashboard = () => {
 					"rgba(24, 101, 86, 1)",
 					"rgba(100, 255, 100, 1)",
 					"rgba(20, 25, 65, 1)",
+					"rgba(98, 151, 35, 1)",
+					"rgba(19, 255, 239, 1)",
+					"rgba(205, 251, 65, 1)",
 				],
 				borderWidth: 1,
 			},
@@ -162,6 +168,7 @@ const Dashboard = () => {
 							<PieChart chartData={plantLocData} />
 							</Paper>
 						</Grid>
+						
 						<Grid item xs={12} sm={8} md={8}>
 							<Paper sx={{boxShadow:3,backgroundColor:"rgba(255, 99, 132, 0.2)"}}>
 							<Typography
@@ -169,12 +176,12 @@ const Dashboard = () => {
 								variant="h6"
 								sx={{ textAlign: "center" }}
 							>
-								PARTS USED
+								DISTRIBUTION
 							</Typography>
-							<BarChart chartData={partUsedData} />
+							<BarChart chartData={plantHeightData} />
 							</Paper>
 						</Grid>
-						<Grid item xs={12} sm={12} md={6}>
+						<Grid item xs={12} sm={8} md={6}>
 							<Paper sx={{boxShadow:3,backgroundColor:"rgba(255, 206, 86, 0.3)"}}>
 							<Typography
 								color="gray"
@@ -186,16 +193,16 @@ const Dashboard = () => {
 							<LineChart chartData={plantTypeData} />
 							</Paper>
 						</Grid>
-						<Grid item xs={12} sm={12} md={6}>
+						<Grid item xs={12} sm={6} md={6}>
 							<Paper sx={{boxShadow:3,backgroundColor:"rgba(20, 25, 65, 0.1)"}}>
 							<Typography
 								color="gray"
 								variant="h6"
 								sx={{ textAlign: "center" }}
 							>
-								HEIGHT
+								PARTS USED
 							</Typography>
-							<BarChart chartData={plantHeightData} />
+							<BarChart chartData={partUsedData} />
 							</Paper>
 						</Grid>
 					</Grid>

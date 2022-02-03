@@ -103,7 +103,7 @@ const Plants = () => {
 						</Grid>
 						<Grid item xs={12} sm={6} md={6}>
 							<Typography sx={{fontSize: 20,pt:3,pl:2}} variant="subtitle2" color="text.secondary">Local Name : {plantData.LocalName}</Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Scientific Name : {plantData.ScientificName}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Scientific Name : <span style={{fontStyle:"italic"}}>{plantData.ScientificName}</span></Typography>
 							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Types : {plantData.Types}</Typography>
 							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Distribution : {plantData.Distribution}</Typography>
 							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Parts Used : {plantData.PartsUsed}</Typography>

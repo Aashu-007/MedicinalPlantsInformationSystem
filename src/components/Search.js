@@ -212,7 +212,9 @@ const Search = () => {
 										<span style={{ fontWeight: "bold" }}>
 											Scientific Name :{" "}
 										</span>
+										<span style={{fontStyle:"italic"}}>
 										{modal.ScientificName}
+										</span>
 									</Typography>
 									<Typography
 										variant="subtitle1"
