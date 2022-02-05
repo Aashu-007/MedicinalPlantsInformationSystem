@@ -217,14 +217,15 @@ const Search = () => {
 										</span>
 									</Typography>
 									<Typography
-										variant="subtitle1"
-										color="text.primary"
+									variant="subtitle1"
+									color="text.primary"
 									>
-										<span style={{ fontWeight: "bold" }}>
-											Distribution :{" "}
-										</span>
-										{modal.Distribution}
+									<span style={{ fontWeight: "bold" }}>
+										Family :{" "}
+									</span>
+									{modal.PlantFamily}
 									</Typography>
+									
 									<Typography
 										variant="subtitle1"
 										color="text.primary"

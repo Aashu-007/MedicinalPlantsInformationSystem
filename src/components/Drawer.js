@@ -30,7 +30,7 @@ import "../App.css";
 const useStyles = makeStyles({
   drawer: {
     position: "absolute",
-    width: "220px",
+    width: "230px",
     height: "100%",
     backgroundColor: green[900],
     color: "white",
@@ -55,7 +55,7 @@ const Drawer = () => {
     if (location.pathname === "/") {
       setActiveTab("Home");
     } else if (location.pathname === "/explorespecies") {
-      setActiveTab("Explore Plants");
+      setActiveTab("Explore Species");
     } else if (location.pathname === "/addspecies") {
       setActiveTab("Add New Species");
     } else if (location.pathname === "/contact") {
@@ -76,7 +76,7 @@ const Drawer = () => {
       path: "/",
     },
      {
-      text: "Explore Plants",
+      text: "Explore Species",
       icon: <TravelExploreIcon style={{ color: green[50] }} />,
       path: "/explorespecies",
     },
@@ -185,7 +185,7 @@ const Drawer = () => {
               <Link
                 to={path}
                 style={{ textDecoration: "inherit", color: "inherit" }}
-                onClick={() => setOpen(false)}
+                onClick={() => {setOpen(false);window.scroll(0,0)}}
               >
                 <p
                   className={`${activeTab === text ? "active" : ""}`}

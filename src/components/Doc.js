@@ -65,9 +65,9 @@ const Doc = ({ plantData }) => {
 								</Text>
 							</Text>
 							<Text>
-								Distribution :{" "}
+								Plant Family :{" "}
 								<Text style={styles.data}>
-									{plantData.Distribution}
+									{plantData.PlantFamily}
 								</Text>
 							</Text>
 							<Text>
@@ -77,7 +77,7 @@ const Doc = ({ plantData }) => {
 								</Text>
 							</Text>
 							<Text>
-								PartsUsed :{" "}
+								Parts Used :{" "}
 								<Text style={styles.data}>
 									{plantData.PartsUsed}
 								</Text>
@@ -91,6 +91,8 @@ const Doc = ({ plantData }) => {
 						</View>
 						<Text style={styles.subtitle}>Description</Text>
 						<Text style={styles.para}>{plantData.Description}</Text>
+						<Text style={styles.subtitle}>Distribution</Text>
+						<Text style={styles.para}>{plantData.Distribution}</Text>
 						<Text style={styles.subtitle}>Uses</Text>
 						<Text style={styles.para}>{plantData.Uses}</Text>
 					</View>

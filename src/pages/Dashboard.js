@@ -181,7 +181,7 @@ const Dashboard = () => {
 							<BarChart chartData={plantHeightData} />
 							</Paper>
 						</Grid>
-						<Grid item xs={12} sm={8} md={6}>
+						<Grid item xs={12} sm={6} md={6}>
 							<Paper sx={{boxShadow:3,backgroundColor:"rgba(255, 206, 86, 0.3)"}}>
 							<Typography
 								color="gray"
@@ -207,7 +207,10 @@ const Dashboard = () => {
 						</Grid>
 					</Grid>
 					<Box sx={{display:"flex",justifyContent:"center",mt:5}}>
-					<Button size="large" variant="outlined" color="secondary" onClick={()=>history.push("/explorespecies")}>
+					<Button size="large" variant="outlined" color="secondary" onClick={() => {
+						history.push("/explorespecies");
+						window.scroll(0,0);
+						}}>
 						Explore Plants
 					</Button>
 					</Box>

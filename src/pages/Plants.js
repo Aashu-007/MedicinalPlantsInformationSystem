@@ -102,19 +102,23 @@ const Plants = () => {
 							</Card>
 						</Grid>
 						<Grid item xs={12} sm={6} md={6}>
-							<Typography sx={{fontSize: 20,pt:3,pl:2}} variant="subtitle2" color="text.secondary">Local Name : {plantData.LocalName}</Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Scientific Name : <span style={{fontStyle:"italic"}}>{plantData.ScientificName}</span></Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Types : {plantData.Types}</Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Distribution : {plantData.Distribution}</Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Parts Used : {plantData.PartsUsed}</Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">Location : {plantData.Location}</Typography>
-							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary">WikiLink : <a href={plantData.WikiLink} target="_blank" rel="noopener noreferrer">Visit</a></Typography>
+							<Typography sx={{fontSize: 20,pt:3,pl:2}} variant="subtitle2" color="text.secondary"><span style={{fontWeight:"bold"}}>Local Name :</span> {plantData.LocalName}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary"><span style={{fontWeight:"bold"}}>Scientific Name :</span> <span style={{fontStyle:"italic"}}>{plantData.ScientificName}</span></Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary"><span style={{fontWeight:"bold"}}>Family :</span> {plantData.PlantFamily}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary"><span style={{fontWeight:"bold"}}>Types :</span> {plantData.Types}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary"><span style={{fontWeight:"bold"}}>Parts Used :</span> {plantData.PartsUsed}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary"><span style={{fontWeight:"bold"}}>Location :</span> {plantData.Location}</Typography>
+							<Typography sx={{fontSize: 20,pl:2}} variant="subtitle2" color="text.secondary"><span style={{fontWeight:"bold"}}>WikiLink :</span> <a href={plantData.WikiLink} target="_blank" rel="noopener noreferrer">Visit</a></Typography>
 						</Grid>
 						<Grid xs={12}>
 							<Typography color="primary" sx={{pt:2,textAlign:'justify',fontWeight:'bold'}} variant="h6">Description</Typography>
 							<Typography sx={{textAlign:'justify', wordWrap:"break-word"}} variant="body1">{plantData.Description}</Typography>
+							<Typography color="primary" sx={{pt:2,textAlign:'justify',fontWeight:'bold'}} variant="h6">Distribution</Typography>
+							<Typography sx={{textAlign:'justify', wordWrap:"break-word"}} variant="body1">{plantData.Distribution}</Typography>
 							<Typography color="primary" sx={{pt:2,textAlign:'justify',fontWeight:'bold'}} variant="h6">Uses</Typography>
 							<Typography sx={{textAlign:'justify', wordWrap:"break-word"}} variant="body1">{plantData.Uses}</Typography>
+
+
 						</Grid>
 					</Grid>
 

@@ -58,6 +58,7 @@ const GetData = () => {
 					id: id,
 					ImgUrl: data[id].ImgUrl,
 					LocalName: data[id].LocalName,
+					PlantFamily: data[id].PlantFamily,
 					ScientificName: data[id].ScientificName,
 					Distribution: data[id].Distribution,
 					PartsUsed: data[id].PartsUsed,
@@ -140,7 +141,8 @@ const GetData = () => {
 														View
 													</Button>
 
-													<Button size="small">
+													<Button size="small" onClick={() => window.scroll(0,0)
+													}>
 														<Link
 															to={`/plant/${data.id}`}
 															style={{
@@ -190,9 +192,9 @@ const GetData = () => {
 									color="text.primary"
 								>
 									<span style={{ fontWeight: "bold" }}>
-										Distribution :{" "}
+										Family :{" "}
 									</span>
-									{modal.Distribution}
+									{modal.PlantFamily}
 								</Typography>
 								<Typography
 									variant="subtitle1"

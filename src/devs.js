@@ -22,7 +22,7 @@ const devs = [
 	{
 		name: "Adarsh Sharma",
 		img : "https://firebasestorage.googleapis.com/v0/b/mpis-mini.appspot.com/o/adarsh.jpg?alt=media&token=a73feae0-b005-4997-a8d8-5efdd54a22c8",
-		description: "A trainee software developer who also loves writing nepali poems, is from a small village Mungpoo, Darjeeling, he loves Riding. He holds a bachelor degree in Computer Applications and is currently pursuing MCA from Sikkim University.",
+		description: "A trainee software developer who also writes nepali poems, is from a small village of Darjeeling i.e Mungpoo. He holds a bachelor degree in Computer Applications and is currently pursuing MCA from Sikkim University. He loves riding.",
 		ln : "https://linkedin.com/in/adarsh-sharma-5b7b17227",
 		git : "https://github.com/AdarshSharma-Addu",
 		fb: "https://facebook.com/profile.php?id=10000555760499",
