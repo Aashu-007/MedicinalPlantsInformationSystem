@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d1c981cf3ee9ecf0cfc8d46fbe84f2f7",
+    "revision": "13dc9a8609073304183d0b4f2a426e74",
     "url": "/MedicinalPlantsInformationSystem/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MedicinalPlantsInformationSystem/static/css/2.cd131656.chunk.css"
   },
   {
-    "revision": "7265f137887cadcb16fd",
+    "revision": "d0946bb0ff7a21dea9a7",
     "url": "/MedicinalPlantsInformationSystem/static/css/main.7c71995e.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MedicinalPlantsInformationSystem/static/js/2.cbf12af9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7265f137887cadcb16fd",
-    "url": "/MedicinalPlantsInformationSystem/static/js/main.c91c8f0d.chunk.js"
+    "revision": "d0946bb0ff7a21dea9a7",
+    "url": "/MedicinalPlantsInformationSystem/static/js/main.e7345ded.chunk.js"
   },
   {
     "revision": "74dda3508726cf51dcb6",
