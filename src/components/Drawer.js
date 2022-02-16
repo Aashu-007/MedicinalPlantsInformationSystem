@@ -172,7 +172,7 @@ const Drawer = () => {
         <List className={classes.drawer}>
           <Box height={170} sx={{ flexGrow: 1, mt: -1 ,width:"100%"}}>
             <img
-              src="logo.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/mpis-mini.appspot.com/o/logo.jpg?alt=media&token=a8def575-176c-49e0-bed6-5b897428cc62"
               alt="mpis sikkim logo"
               width="100%"
               height="100%"
