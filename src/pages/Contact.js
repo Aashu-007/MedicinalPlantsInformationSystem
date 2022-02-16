@@ -55,7 +55,7 @@ const Contact = () => {
             >
                 <Box
                     component="main"
-                    sx={{ flexGrow: 1, p: 2, boxShadow: 1, pt: 8 }}
+                    sx={{ flexGrow: 1, p: 2, boxShadow: 1, py: 8 }}
                     maxWidth={800}
                     m="auto"
                     bgcolor="white"

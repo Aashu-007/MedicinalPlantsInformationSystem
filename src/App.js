@@ -27,15 +27,15 @@ function App() {
         <Drawer />
         <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route exaxt path="/explorespecies" component={Explore}/>
-          <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
-          <ProtectedRoute exact path="/addspecies" component={AddSpecies} />
-          <Route exact path="/plant/:id" component={Plants} />
-          <Route exaxt path="/search" component={Search}/>
-          <Route exaxt path="/signup" component={Signup}/>
-          <Route exaxt path="/login" component={Login}/>
-          <Route exaxt path="/forgotPswd" component={forgotPswd}/>
+          <Route path="/explorespecies" component={Explore}/>
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <ProtectedRoute path="/addspecies" component={AddSpecies} />
+          <Route path="/plant/:id" component={Plants} />
+          <Route path="/search" component={Search}/>
+          <Route path="/signup" component={Signup}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/forgotPswd" component={forgotPswd}/>
           <Route component={Error} />
         </Switch>
         </AuthProvider>
