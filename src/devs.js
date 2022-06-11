@@ -12,7 +12,7 @@ const devs = [
 	{
 		name: "Neeraj Anand",
 		img : "https://firebasestorage.googleapis.com/v0/b/mpis-mini.appspot.com/o/neerajanand.jpg?alt=media&token=94703b8e-f9d8-4a0f-9ad2-f24043c95c98",
-		description: "A passionate programmer with great problem solving skills from Patna. He holds a bachelor degree in Computer Application from Birla Institute of Technology Mesra and is currently pursuing a master in Computer Application from Sikkim University.",
+		description: "A passionate programmer with great problem solving skill from Patna. He holds a bachelor degree in Computer Application from Birla Institute of Technology Mesra and is currently pursuing a master in Computer Application from Sikkim University.",
 		ln : "https://www.linkedin.com/in/neeraj-anand-645002195/",
 		git : "https://github.com/Njanand-xenon",
 		fb: "https://www.facebook.com/Njanand.xenon/",
