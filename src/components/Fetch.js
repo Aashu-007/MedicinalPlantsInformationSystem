@@ -48,7 +48,6 @@ const GetData = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		console.log("Loading 1",loading)
 		const firestore = firebase.database().ref("/PlantDatabase");
 		firestore.on("value", (response) => {
 			const data = response.val();
@@ -70,7 +69,6 @@ const GetData = () => {
 			setPlantData(PlantsInfo);
 			setLoading(false);
 		});
-		console.log("Loading 2",loading)
 	}, [loading]);
 
 	return (
