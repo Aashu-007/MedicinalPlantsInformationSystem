@@ -14,9 +14,9 @@ The **Medicinal Plants Information System** is a web-based application designed 
 - **Responsive Design:** Optimized for various devices and screen sizes.
 
 ##  Technologies Used
- **Frontend**: React.js
- **Backend**: Firebase
-**Deployment**: Github Pages
+- **Frontend**: React.js
+- **Backend**: Firebase
+- **Deployment**: Github Pages
 
 ## Installation
 
