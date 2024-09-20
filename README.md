@@ -23,20 +23,28 @@ The **Medicinal Plants Information System** is a web-based application designed 
 To run this project locally, follow these steps:
 
 1. **Clone the repository:**
-        git clone https://github.com/your-username/MedicinalPlantsInformationSystem.git
+```bash
+git clone https://github.com/your-username/MedicinalPlantsInformationSystem.git
+```
 	
 2. **Navigate to the project directory:**
-        cd MedicinalPlantsInformationSystem
+```bash
+cd MedicinalPlantsInformationSystem
+```
 	
 3. **Install dependencies:**
-        npm install
+```bash
+npm install
+```
 
 4. **Set up Firebase:**
 Create a Firebase project and add the configuration to the application.
 Update firebaseConfig.js with your Firebase project's credentials.
 
 5. **Run the application:**
-        npm start
+```bash
+npm start
+```
 
 The application should now be running at http://localhost:3000.
 
