@@ -3,7 +3,7 @@
 ## OVERVIEW
 The **Medicinal Plants Information System** is a web-based application designed to provide comprehensive information about medicinal plants found in Sikkim. Developed using React.js for the frontend and Firebase for backend services, this application allows users to explore plant data, manage tasks, and contribute new findings in real time.
 
-#### View the application live [here](https://aashu-007.github.io/MedicinalPlantsInformationSystem/) 
+### View the application live [here](https://aashu-007.github.io/MedicinalPlantsInformationSystem/) 
 
 ## Features
 - **Real-Time Synchronization:** Leveraging Firebase for seamless updates and synchronization across devices.
@@ -16,7 +16,7 @@ The **Medicinal Plants Information System** is a web-based application designed 
 ##  Technologies Used
 - **Frontend**: React.js
 - **Backend**: Firebase
-- **Deployment**: Github Pages
+- **Deployment**: [Github Pages](https://aashu-007.github.io/MedicinalPlantsInformationSystem/) 
 
 ## Installation
 
