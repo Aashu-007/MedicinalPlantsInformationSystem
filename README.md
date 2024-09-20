@@ -38,8 +38,8 @@ npm install
 ```
 
 4. **Set up Firebase:**
-Create a Firebase project and add the configuration to the application.
-Update firebaseConfig.js with your Firebase project's credentials.
+- *Create a Firebase project and add the configuration to the application.*
+- *Update firebaseConfig.js with your Firebase project's credentials.*
 
 5. **Run the application:**
 ```bash
@@ -75,4 +75,4 @@ git push origin feature-branch
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
-For any questions or feedback, please reach out to [gupta.nirmal10@example.com].
+For any questions or feedback, please reach out to [gupta.nirmal10@gmail.com].
