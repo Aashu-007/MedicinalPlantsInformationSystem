@@ -53,7 +53,7 @@ The application should now be running at http://localhost:3000.
 - **View Details:** Click on a plant to see detailed information.
 - **Add New Species:** Use the provided form to add new medicinal plants to the database.
 
-##Contributing
+## Contributing
 Contributions are welcome! If you'd like to contribute to the project:
 
 1. **Fork the repository**
